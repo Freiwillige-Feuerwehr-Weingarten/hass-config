@@ -237,70 +237,70 @@ sensor.ipad_elw_ersatz_feuerwehr_weingarten_battery_level:
 # Temperaturen
   # EG
 sensor.leitstand_temperatur:
-  friendly_name: not translated
+  friendly_name: Leitstand
 sensor.fuehrungsraum_temperatur:
-  friendly_name: not translated
+  friendly_name: Führungsraum
 sensor.dusche_herren_temperatur:
-  friendly_name: not translated
+  friendly_name: Dusche Herren
 sensor.dusche_damen_temperatur:
-  friendly_name: not translated
+  friendly_name: Dusche Damen
 sensor.umkleide_damen_bereich_temperatur:
-  friendly_name: not translated
+  friendly_name: Umkleide Damen
 sensor.umkleide_herren_bereich_temperatur:
-  friendly_name: not translated
+  friendly_name: Umkleide Herren
 sensor.schlauchpflege_temp:
-  friendly_name: not translated
+  friendly_name: Schlauchpflege
 sensor.atemschutz_schwarz_temp:
-  friendly_name: not translated
+  friendly_name: Atemschutz Schwarz
 sensor.lager_eg:
-  friendly_name: not translated
+  friendly_name: Lager EG
 sensor.atemschutz_uebergabe:
-  friendly_name: not translated
+  friendly_name: Atemschutz Übergabe
 sensor.schmutzraum_herren:
-  friendly_name: not translated
+  friendly_name: Schmutzraum Herren
 sensor.schmutzraum_damen:
-  friendly_name: not translated
+  friendly_name: Schmutzraum Damen
 sensor.umkleide:
-  friendly_name: not translated
+  friendly_name: Umkleide
 sensor.wc_herren_eg:
-  friendly_name: not translated
+  friendly_name: WC Herren EG
 sensor.wc_damen_eg:
-  friendly_name: not translated
+  friendly_name: WC Damen EG
 sensor.kleiderkammer_eg:
-  friendly_name: not translated
+  friendly_name: Kleiderkammer
 sensor.schlauchpflegewerkstatt:
-  friendly_name: not translated
+  friendly_name: Schlauchpflege
 sensor.geraetewartbuero:
-  friendly_name: not translated
+  friendly_name: Gerätewartbüro
 sensor.atemschutz_schwarz:
-  friendly_name: not translated
+  friendly_name: Atemschutz Schwarz
 sensor.atemschutz_weiss:
-  friendly_name: not translated
+  friendly_name: Atemschutz Weiß
 sensor.atemschutz_auffuellen:
-  friendly_name: not translated
+  friendly_name: Atemschutz Auffüllen
 sensor.atemschutz_ausruesten:
-  friendly_name: not translated
+  friendly_name: Atemschutz Ausrüsten
 sensor.atemschutz_lager:
-  friendly_name: not translated
+  friendly_name: Atemschutz Lager
 sensor.foyer_eg:
-  friendly_name: not translated
+  friendly_name: Foyer EG
 sensor.flur_neubau_eg:
-  friendly_name: not translated
+  friendly_name: Flur Neubau EG
   # OG
 sensor.getraenkelager:
-  friendly_name: not translated
+  friendly_name: Getränkelager
 sensor.foyer_og:
-  friendly_name: not translated
+  friendly_name: Foyer OG
 sensor.teekueche:
-  friendly_name: not translated
+  friendly_name: Teeküche
 sensor.stuhllager:
-  friendly_name: not translated
+  friendly_name: Stuhllager
 sensor.wc_damen_og:
-  friendly_name: not translated
+  friendly_name: WC Damen OG
 sensor.behinderten_wc:
-  friendly_name: not translated
+  friendly_name: WC Behinderte
 sensor.wc_herren_og:
-  friendly_name: not translated
+  friendly_name: WC Herren OG
 sensor.flur_og:
   friendly_name: Flur OG
 
