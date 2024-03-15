@@ -1,0 +1,13 @@
+fahrzeughalle:
+    name: Fahrzeughalle Altbau
+    entities:
+      - light.halle1
+      - light.halle2
+      - light.halle3
+      - light.halle4
+      - light.halle5
+      - light.halle6
+      - light.halle7
+      - light.halle8
+      - light.halle9
+      - light.halle10
