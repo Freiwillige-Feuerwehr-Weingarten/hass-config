@@ -311,6 +311,24 @@ sensor.kleiderkammer_eg_humidity:
 sensor.atemschutz_schwarz_humidity:
   friendly_name: Atemschutz Schwarz
 
+# CO
+sensor.dusche_herren_co2_temp:
+  friendly_name: Dusche Herren
+sensor.dusche_damen_co2:
+  friendly_name: Dusche Damen
+sensor.lager_co2:
+  friendly_name: Lager EG
+sensor.umkleide_damen_bereich_co2:
+  friendly_name: Umkleide Damen
+sensor.umkleide_herren_bereich_co2:
+  friendly_name: Umkleide Herren
+sensor.schlauchpflege_co2:
+  friendly_name: Schluchpflege
+sensor.kleiderkammer_eg_co2:
+  friendly_name: Kleiderkammer EG
+senor.atemschutz_schwarz_co2:
+  friendly_name: Atemschutz Schwarz
+
 
 # Binary Sensor
 binary_sensor.wetterstation_regenalarm:
