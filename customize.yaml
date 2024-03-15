@@ -230,6 +230,8 @@ sensor.ipad_elw_ersatz_feuerwehr_weingarten_battery_level:
   friendly_name: iPad Fahrzeughalle Rechts Akkustand
 
 # Temperaturen
+sensor.wetterstation_temperatur:
+  friendly_name: Wetterstation
   # EG
 sensor.leitstand_temperatur:
   friendly_name: Leitstand
