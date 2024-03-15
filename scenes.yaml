@@ -1,0 +1,565 @@
+- id: '1683207683275'
+  name: ELA Einsatz Szene
+  entities:
+    automation.ela_schalten_auf_einsatzszene:
+      last_triggered: '2022-10-23T17:03:02.748427+00:00'
+      mode: single
+      current: 0
+      id: 585142117507474aa7a2e93e34912b6c
+      friendly_name: ELA schalten auf Einsatzszene
+      state: 'on'
+  icon: mdi:alarm-light
+  metadata:
+    automation.ela_schalten_auf_einsatzszene:
+      entity_only: true
+- id: '1687965156466'
+  name: Halle 15 Einsatz
+  entities:
+    cover.garage_halle15:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 15 - LF1
+      supported_features: 11
+      state: open
+    light.halle15:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 15 - LF1
+      supported_features: 0
+      state: 'on'
+    switch.absaugung_neubau:
+      friendly_name: absaugung_neubau
+      state: 'on'
+  metadata:
+    cover.garage_halle15:
+      entity_only: true
+    light.halle15:
+      entity_only: true
+    switch.absaugung_neubau:
+      entity_only: true
+- id: '1687965684247'
+  name: Halle 16 Einsatz
+  entities:
+    cover.garage_halle16:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 16 - LF2
+      supported_features: 11
+      state: open
+    light.halle16:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 16 - LF2
+      supported_features: 0
+      state: 'on'
+    switch.absaugung_neubau:
+      friendly_name: absaugung_neubau
+      state: 'on'
+  metadata:
+    cover.garage_halle16:
+      entity_only: true
+    light.halle16:
+      entity_only: true
+    switch.absaugung_neubau:
+      entity_only: true
+- id: '1687965754094'
+  name: Halle 17 Einsatz
+  entities:
+    cover.garage_halle17_1:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 17 1 - GWA
+      supported_features: 11
+      state: open
+    cover.garage_halle17_2:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 17 2 -
+      supported_features: 11
+      state: open
+    light.halle17:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 17 - GWA
+      supported_features: 0
+      state: 'on'
+    switch.absaugung_neubau:
+      friendly_name: absaugung_neubau
+      state: 'on'
+  metadata:
+    cover.garage_halle17_1:
+      entity_only: true
+    cover.garage_halle17_2:
+      entity_only: true
+    light.halle17:
+      entity_only: true
+    switch.absaugung_neubau:
+      entity_only: true
+- id: '1687965799561'
+  name: Halle 1 Einsatz
+  entities:
+    cover.garage_door:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 1 - KdoW
+      supported_features: 11
+      state: open
+    light.halle1:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 1 - KdoW
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_door:
+      entity_only: true
+    light.halle1:
+      entity_only: true
+- id: '1687965833161'
+  name: Halle 2 Einsatz
+  entities:
+    cover.garage_halle2:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 2 - MTW-1
+      supported_features: 11
+      state: open
+    light.halle2:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 2 - MTW-2 und Anhänger
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_halle2:
+      entity_only: true
+    light.halle2:
+      entity_only: true
+- id: '1687965922857'
+  name: Halle 3 Einsatz
+  entities:
+    cover.garage_halle3:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 3 - MTW-2 und Anhänger
+      supported_features: 11
+      state: open
+    light.halle3:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 3 - MTW-1
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_halle3:
+      entity_only: true
+    light.halle3:
+      entity_only: true
+- id: '1687965939196'
+  name: Halle 4 Einsatz
+  entities:
+    cover.garage_halle4:
+      device_class: garage
+      icon: mdi:garage-open-variant
+      friendly_name: Halle 4 - GW-Hy
+      supported_features: 11
+      state: open
+    light.halle4:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 4 - GW-Hy
+      supported_features: 0
+      state: 'on'
+    fan.absaugung_altbau:
+      friendly_name: Absaugung Altbau
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_halle4:
+      entity_only: true
+    light.halle4:
+      entity_only: true
+    fan.absaugung_altbau:
+      entity_only: true
+- id: '1687965954362'
+  name: Halle 5 Einsatz
+  entities:
+    cover.garage_halle5:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 5 - Lima Anhänger
+      supported_features: 11
+      state: open
+    light.halle5:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 5 - LiMa
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_halle5:
+      entity_only: true
+    light.halle5:
+      entity_only: true
+- id: '1687965969090'
+  name: Halle 6 Einsatz
+  entities:
+    cover.garage_halle6:
+      device_class: garage
+      icon: mdi:garage-open-variant
+      friendly_name: Halle 6 - GW-T
+      supported_features: 11
+      state: open
+    light.halle6:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 6 - GW-T
+      supported_features: 0
+      state: 'on'
+    fan.absaugung_altbau:
+      friendly_name: Absaugung Altbau
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_halle6:
+      entity_only: true
+    light.halle6:
+      entity_only: true
+    fan.absaugung_altbau:
+      entity_only: true
+- id: '1687965998389'
+  name: Halle 7 Einsatz
+  entities:
+    cover.garage_halle7:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 7 - Stapler
+      supported_features: 11
+      state: open
+    light.halle7:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 7 - Stapler
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_halle7:
+      entity_only: true
+    light.halle7:
+      entity_only: true
+- id: '1687966018346'
+  name: Halle 8 Einsatz
+  entities:
+    cover.garage_halle8:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 8 - NEA / DL19
+      supported_features: 11
+      state: open
+    light.halle8:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 8 - NEA / DL19
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_halle8:
+      entity_only: true
+    light.halle8:
+      entity_only: true
+- id: '1687966034034'
+  name: Halle 9 Einsatz
+  entities:
+    cover.garage_halle9:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 9 - Leer
+      supported_features: 11
+      state: open
+    light.halle9:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 9 - Leer
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_halle9:
+      entity_only: true
+    light.halle9:
+      entity_only: true
+- id: '1687966048720'
+  name: Halle 10 Einsatz
+  entities:
+    cover.garage_halle10:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 10 - Waschhalle
+      supported_features: 11
+      state: open
+    light.halle10:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 10 - Waschhalle
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_halle10:
+      entity_only: true
+    light.halle10:
+      entity_only: true
+- id: '1687966082957'
+  name: Halle 11 Einsatz
+  entities:
+    cover.garage_halle11_1:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 11_1 - ELWVRW
+      supported_features: 11
+      state: open
+    cover.garage_halle11_2:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 11_2 - ELWVRW
+      supported_features: 11
+      state: open
+    light.halle11:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 11 - VRW und ELW
+      supported_features: 0
+      state: 'on'
+  metadata:
+    cover.garage_halle11_1:
+      entity_only: true
+    cover.garage_halle11_2:
+      entity_only: true
+    light.halle11:
+      entity_only: true
+- id: '1687966099445'
+  name: Halle 12 Einsatz
+  entities:
+    cover.garage_halle12:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 12 - RW2
+      supported_features: 11
+      state: open
+    light.halle12:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 12 - RW2
+      supported_features: 0
+      state: 'on'
+    switch.absaugung_neubau:
+      friendly_name: absaugung_neubau
+      state: 'on'
+  metadata:
+    cover.garage_halle12:
+      entity_only: true
+    light.halle12:
+      entity_only: true
+    switch.absaugung_neubau:
+      entity_only: true
+- id: '1687966115043'
+  name: Halle 13 Einsatz
+  entities:
+    cover.garage_halle13:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 13 - TLF
+      supported_features: 11
+      state: open
+    light.halle13:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 13 - TLF
+      supported_features: 0
+      state: 'on'
+    switch.absaugung_neubau:
+      friendly_name: absaugung_neubau
+      state: 'on'
+  metadata:
+    cover.garage_halle13:
+      entity_only: true
+    light.halle13:
+      entity_only: true
+    switch.absaugung_neubau:
+      entity_only: true
+- id: '1687966132449'
+  name: Halle 14 Einsatz
+  entities:
+    cover.garage_halle14:
+      device_class: garage
+      icon: mdi:garage-open-variant
+      friendly_name: Halle 14 - DLK
+      supported_features: 11
+      state: open
+    light.halle14:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 14 - DLK
+      supported_features: 0
+      state: 'on'
+    switch.absaugung_neubau:
+      friendly_name: absaugung_neubau
+      state: 'on'
+  metadata:
+    cover.garage_halle14:
+      entity_only: true
+    light.halle14:
+      entity_only: true
+    switch.absaugung_neubau:
+      entity_only: true
+- id: '1687966453799'
+  name: Rüstzug
+  entities:
+    light.halle11:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 11 - VRW und ELW
+      supported_features: 0
+      color_mode: onoff
+      state: 'on'
+    light.halle12:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 12 - RW2
+      supported_features: 0
+      color_mode: onoff
+      state: 'on'
+    light.halle13:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 13 - TLF
+      supported_features: 0
+      color_mode: onoff
+      state: 'on'
+    switch.absaugung_neubau:
+      friendly_name: absaugung_neubau
+      state: 'on'
+    cover.garage_halle11_1:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 11_1 - ELWVRW
+      supported_features: 11
+      state: open
+    cover.garage_halle11_2:
+      device_class: garage
+      icon: mdi:garage-open-variant
+      friendly_name: Halle 11_2 - ELWVRW
+      supported_features: 11
+      state: open
+    cover.garage_halle12:
+      device_class: garage
+      icon: mdi:garage-open-variant
+      friendly_name: Halle 12 - RW2
+      supported_features: 11
+      state: open
+    cover.garage_halle13:
+      device_class: garage
+      icon: mdi:garage-open-variant
+      friendly_name: Halle 13 - TLF
+      supported_features: 11
+      state: open
+  metadata:
+    light.halle11:
+      entity_only: true
+    light.halle12:
+      entity_only: true
+    light.halle13:
+      entity_only: true
+    switch.absaugung_neubau:
+      entity_only: true
+    cover.garage_halle11_1:
+      entity_only: true
+    cover.garage_halle11_2:
+      entity_only: true
+    cover.garage_halle12:
+      entity_only: true
+    cover.garage_halle13:
+      entity_only: true
+- id: '1687966487850'
+  name: Löschzug
+  entities:
+    light.halle11:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 11 - VRW und ELW
+      supported_features: 0
+      color_mode: onoff
+      state: 'on'
+    light.halle14:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 14 - DLK
+      supported_features: 0
+      color_mode: onoff
+      state: 'on'
+    light.halle15:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 15 - LF1
+      supported_features: 0
+      color_mode: onoff
+      state: 'on'
+    light.halle16:
+      supported_color_modes:
+      - onoff
+      friendly_name: Halle 16 - LF2
+      supported_features: 0
+      color_mode: onoff
+      state: 'on'
+    switch.absaugung_neubau:
+      friendly_name: absaugung_neubau
+      state: 'on'
+    cover.garage_halle11_1:
+      device_class: garage
+      icon: mdi:garage-variant
+      friendly_name: Halle 11_1 - ELWVRW
+      supported_features: 11
+      state: open
+    cover.garage_halle11_2:
+      device_class: garage
+      icon: mdi:garage-open-variant
+      friendly_name: Halle 11_2 - ELWVRW
+      supported_features: 11
+      state: open
+    cover.garage_halle14:
+      device_class: garage
+      icon: mdi:garage-open-variant
+      friendly_name: Halle 14 - DLK
+      supported_features: 11
+      state: open
+    cover.garage_halle15:
+      device_class: garage
+      icon: mdi:garage-open-variant
+      friendly_name: Halle 15 - LF1
+      supported_features: 11
+      state: open
+    cover.garage_halle16:
+      device_class: garage
+      icon: mdi:garage-open-variant
+      friendly_name: Halle 16 - LF2
+      supported_features: 11
+      state: open
+  metadata:
+    light.halle11:
+      entity_only: true
+    light.halle14:
+      entity_only: true
+    light.halle15:
+      entity_only: true
+    light.halle16:
+      entity_only: true
+    switch.absaugung_neubau:
+      entity_only: true
+    cover.garage_halle11_1:
+      entity_only: true
+    cover.garage_halle11_2:
+      entity_only: true
+    cover.garage_halle14:
+      entity_only: true
+    cover.garage_halle15:
+      entity_only: true
+    cover.garage_halle16:
+      entity_only: true
