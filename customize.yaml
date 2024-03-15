@@ -180,6 +180,12 @@ light.vordach:
 switch.alarm_ruecksetzen:
   friendly_name: Alarm zurücksetzen
 
+# Cover
+cover.leinwand_feuer:
+  friendly_name: Leinwand Feuer
+cover.leinwand_glut:
+  friendly_name: Leinwand Glut
+
 # Sensors
 # Batteries
 sensor.apc_leitstand_1_battery_charge:
