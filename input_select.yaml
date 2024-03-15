@@ -1,0 +1,48 @@
+is_halle11_bewegungsrichtung:
+  options:
+    - Opening
+    - Closing
+    - Stopped
+  initial: Stopped
+
+is_halle12_bewegungsrichtung:
+  options:
+    - Opening
+    - Closing
+    - Stopped
+  initial: Stopped
+
+is_halle13_bewegungsrichtung:
+  options:
+    - Opening
+    - Closing
+    - Stopped
+  initial: Stopped
+
+is_halle14_bewegungsrichtung:
+  options:
+    - Opening
+    - Closing
+    - Stopped
+  initial: Stopped
+
+is_halle15_bewegungsrichtung:
+  options:
+    - Opening
+    - Closing
+    - Stopped
+  initial: Stopped
+
+is_halle16_bewegungsrichtung:
+  options:
+    - Opening
+    - Closing
+    - Stopped
+  initial: Stopped
+
+is_halle17_bewegungsrichtung:
+  options:
+    - Opening
+    - Closing
+    - Stopped
+  initial: Stopped
