@@ -1,0 +1,1344 @@
+
+switch:
+  # Tor 1
+  - name: halle1_tor_auf
+    address: "3/0/10"
+    state_address: "3/0/13"
+  - name: halle1_tor_stop
+    address: "3/0/11"
+  - name: halle1_tor_zu
+    address: "3/0/12"
+  # Tor 2
+  - name: halle2_tor_auf
+    address: "3/0/20"
+    state_address: "3/0/23"
+  - name: halle2_tor_stop
+    address: "3/0/21"
+  - name: halle2_tor_zu
+    address: "3/0/22"
+  # Tor 3
+  - name: halle3_tor_auf
+    address: "3/0/30"
+    state_address: "3/0/33"
+  - name: halle3_tor_stop
+    address: "3/0/31"
+  - name: halle3_tor_zu
+    address: "3/0/32"
+  # Tor 4
+  - name: halle4_tor_auf
+    address: "3/0/40"
+    state_address: "3/0/43"
+  - name: halle4_tor_stop
+    address: "3/0/41"
+  - name: halle4_tor_zu
+    address: "3/0/42"
+  # Tor 5
+  - name: halle5_tor_auf
+    address: "3/0/50"
+    state_address: "3/0/53"
+  - name: halle5_tor_stop
+    address: "3/0/51"
+  - name: halle5_tor_zu
+    address: "3/0/52"
+  # Tor 6
+  - name: halle6_tor_auf
+    address: "3/0/60"
+    state_address: "3/0/63"
+  - name: halle6_tor_stop
+    address: "3/0/61"
+  - name: halle6_tor_zu
+    address: "3/0/62"
+  # Tor 7
+  - name: halle7_tor_auf
+    address: "3/0/70"
+    state_address: "3/0/73"
+  - name: halle7_tor_stop
+    address: "3/0/71"
+  - name: halle7_tor_zu
+    address: "3/0/72"
+  # Tor 8
+  - name: halle8_tor_auf
+    address: "3/0/80"
+    state_address: "3/0/83"
+  - name: halle8_tor_stop
+    address: "3/0/81"
+  - name: halle8_tor_zu
+    address: "3/0/82"
+  # Tor 9
+  - name: halle9_tor_auf
+    address: "3/0/90"
+    state_address: "3/0/93"
+  - name: halle9_tor_stop
+    address: "3/0/91"
+  - name: halle9_tor_zu
+    address: "3/0/92"
+  # Tor 10
+  - name: halle10_tor_auf
+    address: "3/0/100"
+    state_address: "3/0/103"
+  - name: halle10_tor_stop
+    address: "3/0/101"
+  - name: halle10_tor_zu
+    address: "3/0/102"
+
+  # Terasse
+  - name: steckdose_terasse_og
+    address: "4/1/156"
+    state_address: "4/1/157"
+    device_class: outlet
+  - name: alarmabfrage_steckdose
+    address: "4/2/35"
+    state_address: "4/2/36"
+    device_class: outlet
+
+  # Schranke LKW
+  - name: schranke_lkw_auf
+    address: "0/3/56"
+    state_address: "0/3/59"
+  - name: schranke_lkw_dauer_auf
+    address: "0/3/57"
+    state_address: "0/3/58"
+  # Schranke PKW
+  - name: schranke_pkw_auf
+    address: "0/3/51"
+    state_address: "0/3/54"
+  - name: schranke_pkw_dauer_auf
+    address: "0/3/52"
+    state_address: "0/3/53"
+
+  # Tür Halle 1
+  - name: halle1_tur
+    address: "3/1/10"
+    state_address: "3/1/12"
+  # Tür Halle 1 Buzzer
+  - name: halle1_tur_buzzer
+    address: "3/1/11"
+  # Tür Haupteingang
+  - name: haupteingang_tur
+    address: "4/0/26"
+    state_address: "4/0/27"
+  # Tür Nebeneingang EG
+  - name: nebeneingang_tur_eg
+    address: "4/0/29"
+    state_address: "4/0/30"
+
+  # Tür Nebeneingang OG
+  - name: nebeneingang_tur_og
+    address: "4/0/37"
+    state_address: "4/0/38"
+
+  # Alarmeingang
+  - name: alarmeingang
+    address: "4/0/32"
+    state_address: "4/0/33"
+  
+  # Umkleide Damen
+  - name: t_umkleide_damen
+    address: "4/0/41"
+    state_address: "4/0/42"
+
+  # Umkleide Mitte
+  - name: t_umkleide_mitte
+    address: "4/0/43"
+    state_address: "4/0/44"
+
+  # Umkleide Herren
+  - name: t_umkleide_herren
+    address: "4/0/45"
+    state_address: "4/0/46"
+
+  # Tür zur Fahrzeugfalle
+  - name: t_halle
+    address: "4/0/47"
+    state_address: "4/0/48"
+
+  # Tür am Treppenhaus
+  - name: t_treppenhaus
+    address: "4/0/56"
+    state_address: "4/0/57"
+
+  # Absaugung Altbau
+  - name: absaugung
+    address: "3/3/11"
+    state_address: "3/3/14"
+
+  # Absaugung Neubau
+  - name: absaugung_neubau
+    address: "4/0/10"
+    state_address: "4/0/11"
+
+  # Gong bagatelle
+  #- name: gong_bagatelle
+  #  address: "3/5/1"
+
+  # Gong dringend
+  #- name: gong_dringend
+  #  address: "3/5/0"
+
+button:
+  # Alarmanlage
+  - name: bt_telenot_abfrage_zustand
+    address: "0/7/0"
+  - name: bt_telenot_scharf_schalten
+    address: "0/7/5"
+  - name: bt_telenot_unscharf_schalten
+    address: "0/7/6"
+  - name: bt_telenot_ruecksetzen
+    address: "0/7/7"
+  # Bumper freischalten über Alarmfall
+  - name: bumper_free
+    # address: "0/4/31"
+    address: "0/4/30"
+    payload: 0
+
+  # Alarm zurücksetzen
+  - name: alarm_ruecksetzen
+    address: "0/4/9"
+
+  # Alarm dringend
+  - name: knx_alarm_dringend
+    address: "0/4/2"
+
+  # Alarm bagatell
+  - name: knx_alarm_bagatelle
+    address: "0/4/5"
+
+  - name: bt_halle11_1_tor_auf
+    address: "4/6/90"
+  - name: bt_halle11_1_tor_stop
+    address: "4/6/91"
+  - name: bt_halle11_1_tor_zu
+    address: "4/6/92"
+  - name: bt_halle11_2_tor_auf
+    address: "4/6/80"
+  - name: bt_halle11_2_tor_stop
+    address: "4/6/81"
+  - name: bt_halle11_2_tor_zu
+    address: "4/6/82"
+
+  - name: bt_halle12_tor_auf
+    address: "4/6/70"
+  - name: bt_halle12_tor_stop
+    address: "4/6/71"
+  - name: bt_halle12_tor_zu
+    address: "4/6/72"
+
+  - name: bt_halle13_tor_auf
+    address: "4/6/60"
+  - name: bt_halle13_tor_stop
+    address: "4/6/61"
+  - name: bt_halle13_tor_zu
+    address: "4/6/62"
+
+  - name: bt_halle14_tor_auf
+    address: "4/6/50"
+  - name: bt_halle14_tor_stop
+    address: "4/6/51"
+  - name: bt_halle14_tor_zu
+    address: "4/6/52"
+
+  - name: bt_halle15_tor_auf
+    address: "4/6/40"
+  - name: bt_halle15_tor_stop
+    address: "4/6/41"
+  - name: bt_halle15_tor_zu
+    address: "4/6/42"
+
+  - name: bt_halle16_tor_auf
+    address: "4/6/30"
+  - name: bt_halle16_tor_stop
+    address: "4/6/31"
+  - name: bt_halle16_tor_zu
+    address: "4/6/32"
+
+  - name: bt_halle17_1_tor_auf
+    address: "4/6/20"
+  - name: bt_halle17_1_tor_stop
+    address: "4/6/21"
+  - name: bt_halle17_1_tor_zu
+    address: "4/6/22"
+  - name: bt_halle17_2_tor_auf
+    address: "4/6/10"
+  - name: bt_halle17_2_tor_stop
+    address: "4/6/11"
+  - name: bt_halle17_2_tor_zu
+    address: "4/6/12"
+
+  # Dringender Alarm
+  - name: alarm_dringend
+    address: "0/4/8"
+
+light:
+  # UG - Altbau
+  - name: atemschutzwerkstatt
+    address: "1/0/0"
+    state_address: "2/0/0"
+  - name: batterieraum
+    address: "1/0/5"
+    state_address: "2/0/5"
+  - name: serverraum
+    address: "1/0/10"
+    state_address: "2/0/10"
+  - name: heizungsraum
+    address: "1/0/15"
+    state_address: "2/0/15"
+  # Auskommentiert, da nur Schalter aber keine Lichter vorhanden
+  #    name: kellerraum
+  #    address: '1/0/20'
+  #    state_address: '2/0/20'
+  - name: kompressorraum
+    address: "1/0/25"
+    state_address: "2/0/25"
+  #    name: lagerraum
+  #    address: '1/0/30'
+  #    state_address: '2/0/30'
+  - name: technikraum
+    address: "1/0/35"
+    state_address: "2/0/35"
+  - name: kellerflur
+    address: "1/0/40"
+    state_address: "2/0/40"
+  # UG - Neubau
+  - name: ug_aufzug
+    address: "4/1/251"
+    state_address: "4/1/252"
+
+  # Aussen
+  - name: hoflampe_werkstatt
+    address: "1/3/0"
+    state_address: "2/3/0"
+  - name: hoflampe_tur_halle_1
+    address: "1/3/10"
+    state_address: "2/3/10"
+  - name: mastlampen
+    address: "1/3/20"
+    state_address: "2/3/20"
+  - name: fassade_halle_alt
+    address: "1/3/30"
+    state_address: "2/3/30"
+  - name: aussen_kanal_a
+    address: "4/0/251"
+    state_address: "4/0/252"
+  - name: aussen_kanal_2
+    address: "4/0/253"
+    state_address: "4/0/254"
+  - name: fassade_halle_neu
+    address: "4/0/241"
+    state_address: "4/0/242"
+  # Aussenleuchten Parkplätze
+  - name: aussenleuchte_alarmeingang
+    address: "4/0/245"
+    state_address: "4/0/246"
+  - name: aussenleuchte_nebeneingang_eg
+    address: "4/0/247"
+    state_address: "4/0/248"
+  - name: aussenleuchte_nebeneingang_og
+    address: "4/0/249"
+    state_address: "4/0/250"
+
+  # EG - Altbau
+  - name: leitstand_gruppe1
+    address: "1/1/30"
+    state_address: "2/1/30"
+    brightness_address: "1/1/32"
+    brightness_state_address: "2/1/32"
+  - name: leitstand_gruppe2
+    address: "1/1/33"
+    state_address: "2/1/33"
+    brightness_address: "1/1/35"
+    brightness_state_address: "2/1/35"
+  - name: leitstand_gesamt
+    address: "1/1/0"
+    state_address: "2/1/0"
+    brightness_address: "1/1/2"
+    brightness_state_address: "2/1/2"
+  - name: besprechungsraum_gruppe1
+    address: "1/1/5"
+    state_address: "2/1/5"
+    brightness_address: "1/1/7"
+    brightness_state_address: "2/1/7"
+  - name: besprechungsraum_gruppe2
+    address: "1/1/10"
+    state_address: "2/1/10"
+    brightness_address: "1/1/12"
+    brightness_state_address: "2/1/12"
+  - name: besprechungsraum_gruppe3
+    address: "1/1/15"
+    state_address: "2/1/15"
+    brightness_address: "1/1/17"
+    brightness_state_address: "2/1/17"
+  - name: besprechungsraum_gesamt
+    address: "1/1/20"
+    state_address: "2/1/20"
+  - name: flur_altbau_eg
+    address: "1/1/25"
+    state_address: "2/1/25"
+    brightness_address: "1/1/29"
+    brightness_state_address: "2/1/27"
+
+  # OG Neubau
+  # Lehrsäle
+  - name: lehrsaal_3
+    address: "4/1/146"
+    state_address: "4/1/149"
+    brightness_address: "4/1/148"
+    brightness_state_address: "4/1/150"
+  - name: lehrsaal_3_leinwand
+    address: "4/1/151"
+    state_address: "4/1/154"
+    brightness_address: "4/1/153"
+    brightness_state_address: "4/1/155"
+  - name: lehrsaal_2
+    address: "4/1/141"
+    state_address: "4/1/144"
+    brightness_address: "4/1/143"
+    brightness_state_address: "4/1/145"
+  - name: lehrsaal_1
+    address: "4/1/136"
+    state_address: "4/1/139"
+    brightness_address: "4/1/138"
+    brightness_state_address: "4/1/140"
+  - name: lehrsaal_1_leinwand
+    address: "4/1/131"
+    state_address: "4/1/134"
+    brightness_address: "4/1/133"
+    brightness_state_address: "4/1/135"
+  - name: theke
+    address: "4/1/109"
+    state_address: "4/1/110"
+  - name: foyer_og
+    address: "4/1/101"
+    state_address: "4/1/102"
+  - name: flur_og
+    address: "4/1/105"
+    state_address: "4/1/106"
+  - name: teekueche_og
+    address: "4/1/112"
+    state_address: "4/1/113"
+  - name: getraenkelager_og
+    address: "4/1/115"
+    state_address: "4/1/116"
+  - name: damen_wc_og
+    address: "4/1/118"
+    state_address: "4/1/119"
+  - name: behinderten_wc_og
+    address: "4/1/121"
+    state_address: "4/1/122"
+  - name: stuhllager_og
+    address: "4/1/124"
+    state_address: "4/1/125"
+  - name: herren_wc_og
+    address: "4/1/127"
+    state_address: "4/1/128"
+
+  # EG Neubau
+  - name: flur_fahrzeughalle_eg
+    address: "4/2/15"
+    state_address: "4/2/16"
+  - name: herren_dusche_eg
+    address: "4/2/19"
+    state_address: "4/2/20"
+  - name: herren_wc_eg
+    address: "4/2/23"
+    state_address: "4/2/24"
+  - name: herren_schmutzraum_eg
+    address: "4/2/27"
+    state_address: "4/2/28"
+  - name: herren_umkleide_eg
+    address: "4/2/30"
+    state_address: "4/2/31"
+  - name: damen_dusche_eg
+    address: "4/1/8"
+    state_address: "4/1/9"
+  - name: damen_wc_eg
+    address: "4/1/4"
+    state_address: "4/1/5"
+  - name: damen_schmutzraum_eg
+    address: "4/1/1"
+    state_address: "4/1/2"
+  
+  - name: atemschutz_schwarz_eg
+    address: "4/1/17"
+    state_address: "4/1/18"
+  - name: atemschutz_weiss_eg
+    address: "4/1/34"
+    state_address: "4/1/35"
+  - name: atemschutz_lager_eg
+    address: "4/1/14"
+    state_address: "4/1/15"
+  - name: atemschutz_uebergabe_eg
+    address: "4/1/11"
+    state_address: "4/1/12"
+  - name: atemschutz_ausruesten_eg
+    address: "4/1/20"
+    state_address: "4/1/21"
+  - name: atemschutz_befuellung_eg
+    address: "4/1/31"
+    state_address: "4/1/32"
+
+  - name: flur_a_eg
+    address: "4/1/23"
+    state_address: "4/1/24"
+  - name: flur_b_eg
+    address: "4/1/27"
+    state_address: "4/1/28"
+
+  - name: geraetewart_eg
+    address: "4/1/38"
+    state_address: "4/1/39"
+  - name: schlauchpflege_eg
+    address: "4/1/44"
+    state_address: "4/1/45"
+  - name: muellraum_eg
+    address: "4/1/41"
+    state_address: "4/1/42"
+  - name: technik_eg
+    address: "4/1/47"
+    state_address: "4/1/48"
+  - name: lager_eg
+    address: "4/1/50"
+    state_address: "4/1/51"
+  - name: foyer_eg
+    address: "4/1/53"
+    state_address: "4/1/54"
+  - name: kleiderkammer_eg
+    address: "4/1/56"
+    state_address: "4/1/57"
+  - name: elektroraum_eg
+    address: "4/1/59"
+    state_address: "4/1/60"
+
+  # Hallen Lichter
+  - name: halle1
+    address: "1/4/10"
+    state_address: "2/4/10"
+  - name: halle2
+    address: "1/4/20"
+    state_address: "2/4/20"
+  - name: halle3
+    address: "1/4/30"
+    state_address: "2/4/30"
+  - name: halle4
+    address: "1/4/40"
+    state_address: "2/4/40"
+  - name: halle5
+    address: "1/4/50"
+    state_address: "2/4/50"
+  - name: halle6
+    address: "1/4/60"
+    state_address: "2/4/60"
+  - name: halle7
+    address: "1/4/70"
+    state_address: "2/4/70"
+  - name: halle8
+    address: "1/4/80"
+    state_address: "2/4/80"
+  - name: halle9
+    address: "1/4/90"
+    state_address: "2/4/90"
+  - name: halle10
+    address: "1/4/100"
+    state_address: "2/4/100"
+  - name: halle11
+    address: "4/2/1"
+    state_address: "4/2/2"
+  - name: halle12
+    address: "4/2/41"
+    state_address: "4/2/42"
+  - name: halle13
+    address: "4/2/4"
+    state_address: "4/2/5"
+  - name: halle14
+    address: "4/2/43"
+    state_address: "4/2/44"
+  - name: halle15
+    address: "4/2/7"
+    state_address: "4/2/8"
+  - name: halle16
+    address: "4/2/45"
+    state_address: "4/2/46"
+  - name: halle17
+    address: "4/2/10"
+    state_address: "4/2/11"
+
+  # Turm
+  - name: turm_test_gnarf
+    # address: "4/0/231"
+    # state_address: "4/0/235"
+    individual_colors:
+      red:
+        brightness_address: "4/0/223"
+        brightness_state_address: "4/0/225"
+      blue:
+        brightness_address: "4/0/233"
+        brightness_state_address: "4/0/235"
+      green:
+        brightness_address: "4/0/228"
+        brightness_state_address: "4/0/230"
+  
+  # Sammeladressen
+#  - name: alles_aus
+#    address: "0/2/1"
+#    state_address: "0/2/100"
+#  - name: alles_ein
+#    address: "0/2/0"
+#  - name: halle_durchgang
+#    address: "1/4/130"
+#    state_address: "2/4/130"
+#  - name: aussen_gesamt
+#    address: "0/2/8"
+#    state_address: "0/2/108"
+#  - name: eg_gesamt_ein
+#    address: "0/2/4"
+#    state_address: "0/2/104"
+#  - name: eg_gesamt_aus
+#    address: "0/2/5"
+#  - name: halle_gesamt_ein
+#    address: "0/2/6"
+#    state_address: "0/2/106"
+#  - name: halle_gesamt_aus
+#    address: "0/2/7"
+
+sensor:
+  #   Wetterstation
+  - name: wetterstation_helligkeit
+    state_address: "0/1/30"
+    type: "illuminance"
+  - name: wetterstation_temperatur
+    state_address: "0/1/20"
+    type: "temperature"
+  - name: wetterstation_windstarke
+    state_address: "0/1/40"
+    type: "wind_speed_ms"
+  - name: leitstand_temperatur
+    state_address: "0/5/0"
+    type: temperature
+  - name: fuehrungsraum_temperatur
+    state_address: "0/5/1"
+    type: temperature
+  - name: dusche_herren_temperatur
+    state_address: "5/0/1"
+    type: temperature
+  - name: dusche_herren_feuchtigkeit
+    state_address: "5/0/4"
+    type: humidity
+  - name: dusche_herren_co2_temp
+    state_address: "5/0/7"
+    type: ppm
+  - name: dusche_damen_temperatur
+    state_address: "5/0/11"
+    type: temperature
+  - name: dusche_damen_feuchtigkeit
+    state_address: "5/0/14"
+    type: humidity
+  - name: dusche_damen_co2
+    state_address: "5/0/17"
+    type: ppm
+  - name: lager_co2
+    state_address: "5/0/57"
+    type: ppm
+  - name: lager_feuchtigkeit
+    state_address: "5/0/54"
+    type: humidity
+  - name: umkleide_damen_bereich_temperatur
+    state_address: "5/0/21"
+    type: temperature
+  - name: umkleide_damen_bereich_humidty
+    state_address: "5/0/24"
+    type: humidity
+  - name: umkleide_damen_bereich_co2
+    state_address: "5/0/27"
+    type: ppm
+  - name: umkleide_herren_bereich_temperatur
+    state_address: "5/0/31"
+    type: temperature
+  - name: umkleide_herren_bereich_humidty
+    state_address: "5/0/34"
+    type: humidity
+  - name: umkleide_herren_bereich_co2
+    state_address: "5/0/37"
+    type: ppm
+  - name: schlauchpflege_humidity
+    state_address: "5/0/44"
+    type: humidity
+  - name: schlauchpflege_co2
+    state_address: "5/0/47"
+    type: ppm
+  - name: schlauchpflege_temp
+    state_address: "5/0/41"
+    type: temperature
+  - name: kleiderkammer_eg_humidity
+    state_address: "5/0/64"
+    type: humidity
+  - name: kleiderkammer_eg_co2
+    state_address: "5/0/67"
+    type: ppm
+  - name: kleiderkammer_eg_temp
+    state_address: "5/0/61"
+    type: temperature
+  - name: atemschutz_schwarz_humidity
+    state_address: "5/0/74"
+    type: humidity
+  - name: atemschutz_schwarz_co2
+    state_address: "5/0/77"
+    type: ppm
+  - name: atemschutz_schwarz_temp
+    state_address: "5/0/71"
+    type: temperature
+
+
+  # Temperaturen EG
+  - name: lager_eg
+    state_address: "5/1/1"
+    type: temperature
+  - name: lager_eg_co_messer
+    state_address: "5/0/51"
+    type: temperature
+  - name: atemschutz_uebergabe
+    state_address: "5/1/11"
+    type: temperature
+  - name: schmutzraum_herren
+    state_address: "5/1/21"
+    type: temperature
+  - name: schmutzraum_damen
+    state_address: "5/1/31"
+    type: temperature
+  - name: umkleide
+    state_address: "5/1/41"
+    type: temperature
+  - name: wc_herren_eg
+    state_address: "5/1/51"
+    type: temperature
+  - name: wc_damen_eg
+    state_address: "5/1/71"
+    type: temperature
+  - name: kleiderkammer_eg
+    state_address: "5/1/91"
+    type: temperature
+  - name: schlauchpflegewerkstatt
+    state_address: "5/1/101"
+    type: temperature
+  - name: geraetewartbuero
+    state_address: "5/1/111"
+    type: temperature
+  - name: atemschutz_schwarz
+    state_address: "5/1/121"
+    type: temperature
+  - name: atemschutz_weiss
+    state_address: "5/1/131"
+    type: temperature
+  - name: atemschutz_auffuellen
+    state_address: "5/1/141"
+    type: temperature
+  - name: atemschutz_ausruesten
+    state_address: "5/1/151"
+    type: temperature
+  - name: atemschutz_lager
+    state_address: "5/1/161"
+    type: temperature
+  - name: foyer_eg
+    state_address: "5/1/171"
+    type: temperature
+  - name: flur_neubau_eg
+    state_address: "5/1/181"
+    type: temperature
+
+  # Temperaturen OG
+  - name: getraenkelager
+    state_address: "5/2/51"
+    type: temperature
+  - name: foyer_og
+    state_address: "5/2/1"
+    type: temperature
+  - name: teekueche
+    state_address: "5/2/41"
+    type: temperature
+  - name: stuhllager
+    state_address: "5/2/61"
+    type: temperature
+  - name: wc_damen_og
+    state_address: "5/2/71"
+    type: temperature
+  - name: behinderten_wc
+    state_address: "5/2/81"
+    type: temperature
+  - name: wc_herren_og
+    state_address: "5/2/91"
+    type: temperature
+  - name: flur_og
+    state_address: "5/2/101"
+    type: temperature
+
+
+binary_sensor:
+  # Alarmanlage
+  - name: bs_telenot_stoerung_netz
+    state_address: "0/7/8"
+  - name: bs_telenot_stoerung_akku
+    state_address: "0/7/9"
+  - name: bs_telenot_zustand_unscharf
+    state_address: "0/7/10"
+  - name: bs_telenot_zustand_scharf
+    state_address: "0/7/11"
+  - name: bs_telennot_zustand_scharf_bereit
+    state_address: "0/7/12"
+  - name: bs_telennot_sabotage
+    state_address: "0/7/13"
+  - name: bs_telennot_einbruch
+    state_address: "0/7/14"
+  # Altbau
+  - name: untergeschoß_flur_bewegung
+    state_address: "1/0/41"
+    device_class: "motion"
+  - name: erdgeschoß_flur_bewegung
+    state_address: "1/1/26"
+    device_class: "motion"
+  - name: erdgeschoß_treppenhaus_bewegung
+    state_address: "1/5/11"
+    device_class: "motion"
+
+  # Neubau OG
+  - name: lehrsaal_feuer_bewegung_raum
+    state_address: "4/1/136"
+    device_class: "motion"
+  - name: lehrsaal_feuer_bewegung_leinwand
+    state_address: "4/1/131"
+    device_class: "motion"
+  - name: lehrsaal_flamme_bewegung
+    state_address: "4/1/141"
+    device_class: "motion"
+  - name: lehrsaal_glut_bewegung_raum
+    state_address: "4/1/146"
+    device_class: "motion"
+  - name: lehrsaal_glut_bewegung_leinwand
+    state_address: "4/1/151"
+    device_class: "motion"
+  - name: getraenkelager_og
+    state_address: "4/1/115"
+    device_class: "motion"
+  - name: foyer_og
+    state_address: "4/1/101"
+    device_class: "motion"
+  - name: teekueche_og
+    state_address: "4/1/112"
+    device_class: "motion"
+  - name: stuhllager_og
+    state_address: "4/1/124"
+    device_class: "motion"
+  - name: damen_wc_og
+    state_address: "4/1/118"
+    device_class: "motion"
+  - name: behinderten_wc_og
+    state_address: "4/1/121"
+    device_class: "motion"
+  - name: herren_wc_og
+    state_address: "4/1/127"
+    device_class: "motion"
+  - name: flur_og
+    state_address: "4/1/105"
+    device_class: "motion"
+
+
+  # Neubau EG
+  - name: fahrzeughalle_neubau_bewegung
+    state_address: "4/2/15"
+    # Könnte auch 4/2/17 sein
+    device_class: "motion"
+  - name: lager_neubau_eg
+    state_address: "4/1/50"
+    device_class: "motion"
+  - name: umkleide
+    state_address: "4/2/30"
+    device_class: "motion"
+  - name: atemschutz_schwarz_eg
+    state_address: "4/1/17"
+    device_class: "motion"
+  - name: atemschutz_weiss_eg
+    state_address: "4/1/34"
+    device_class: "motion"
+  - name: atemschutz_uebergabe_eg
+    state_address: "4/1/11"
+    device_class: "motion"
+  - name: atemschutz_auffuellen_eg
+    state_address: "4/1/31"
+    device_class: "motion"
+  - name: atemschutz_ausruesten_eg
+    state_address: "4/1/20"
+    device_class: "motion"
+  - name: atemschutz_lager_eg
+    state_address: "4/1/14"
+    device_class: "motion"
+  - name: technik_eg
+    state_address: "4/1/47"
+    device_class: "motion"
+  - name: elektro_eg
+    state_address: "4/1/59"
+    device_class: "motion"
+  - name: herren_schmutzraum_eg
+    state_address: "4/2/27"
+    device_class: "motion"
+  - name: damen_schmutzraum_eg
+    state_address: "4/1/1"
+    device_class: "motion"
+  - name: herren_wc_eg
+    state_address: "4/2/23"
+    device_class: "motion"
+  - name: herren_dusche_eg
+    state_address: "4/2/19"
+    device_class: "motion"
+  - name: damen_wc_eg
+    state_address: "4/1/4"
+    device_class: "motion"
+  - name: damen_dusche_eg
+    state_address: "4/1/8"
+    device_class: "motion"
+  - name: kleiderkammer_eg
+    state_address: "4/1/56"
+    device_class: "motion"
+  - name: schlauchpflege_eg
+    state_address: "4/1/44"
+    device_class: "motion"
+  - name: geraetewart_eg
+    state_address: "4/1/38"
+    device_class: "motion"
+  - name: foyer_eg
+    state_address: "4/1/53"
+    device_class: "motion"
+  - name: flur_foyer_nebeneingang_eg
+    state_address: "4/1/27"
+    device_class: "motion"
+  - name: flur_atemschutz_eg
+    state_address: "4/1/23"
+    device_class: "motion"
+  - name: muellraum_eg
+    state_address: "4/1/41"
+    device_class: "motion"
+    
+  # Neubau UG
+  - name: aufzug_ug
+    state_address: "4/1/251"
+    device_class: "motion"
+
+  # Neubau Halle
+  # Halle 11
+  - name: bs_halle11_1_auf
+    state_address: "4/6/93"
+  - name: bs_halle11_1_zu
+    state_address: "4/6/94"
+  - name: bs_halle11_2_auf
+    state_address: "4/6/83"
+  - name: bs_halle11_2_zu
+    state_address: "4/6/84"  
+  - name: bs_halle11_auf
+    state_address: "4/6/97"
+  - name: bs_halle11_zu
+    state_address: "4/6/98"
+  # Halle 12
+  - name: bs_halle12_1_auf
+    state_address: "4/6/73"
+  - name: bs_halle12_1_zu
+    state_address: "4/6/74"
+  - name: bs_halle12_2_auf
+    state_address: "4/6/75"
+  - name: bs_halle12_2_zu
+    state_address: "4/6/76"  
+  - name: bs_halle12_auf
+    state_address: "4/6/77"
+  - name: bs_halle12_zu
+    state_address: "4/6/78"
+  # Halle 13
+  - name: bs_halle13_1_auf
+    state_address: "4/6/63"
+  - name: bs_halle13_1_zu
+    state_address: "4/6/64"
+  - name: bs_halle13_2_auf
+    state_address: "4/6/65"
+  - name: bs_halle13_2_zu
+    state_address: "4/6/66"  
+  - name: bs_halle13_auf
+    state_address: "4/6/67"
+  - name: bs_halle13_zu
+    state_address: "4/6/68"
+  # Halle 14
+  - name: bs_halle14_1_auf
+    state_address: "4/6/53"
+  - name: bs_halle14_1_zu
+    state_address: "4/6/54"
+  - name: bs_halle14_2_auf
+    state_address: "4/6/55"
+  - name: bs_halle14_2_zu
+    state_address: "4/6/56"  
+  - name: bs_halle14_auf
+    state_address: "4/6/57"
+  - name: bs_halle14_zu
+    state_address: "4/6/58"
+  # Halle 15
+  - name: bs_halle15_1_auf
+    state_address: "4/6/43"
+  - name: bs_halle15_1_zu
+    state_address: "4/6/44"
+  - name: bs_halle15_2_auf
+    state_address: "4/6/45"
+  - name: bs_halle15_2_zu
+    state_address: "4/6/46"  
+  - name: bs_halle15_auf
+    state_address: "4/6/47"
+  - name: bs_halle15_zu
+    state_address: "4/6/48"
+  # Halle 16
+  - name: bs_halle16_1_auf
+    state_address: "4/6/33"
+  - name: bs_halle16_1_zu
+    state_address: "4/6/34"
+  - name: bs_halle16_2_auf
+    state_address: "4/6/35"
+  - name: bs_halle16_2_zu
+    state_address: "4/6/36"  
+  - name: bs_halle16_auf
+    state_address: "4/6/37"
+  - name: bs_halle16_zu
+    state_address: "4/6/38"
+  # Halle 17
+  - name: bs_halle17_1_auf
+    state_address: "4/6/23"
+  - name: bs_halle17_1_zu
+    state_address: "4/6/24"
+  - name: bs_halle17_2_auf
+    state_address: "4/6/13"
+  - name: bs_halle17_2_zu
+    state_address: "4/6/14"  
+  - name: bs_halle17_auf
+    state_address: "4/6/27"
+  - name: bs_halle17_zu
+    state_address: "4/6/28"
+
+
+cover:
+  - name: leinwand_feuer
+    move_long_address: "4/0/21"
+    stop_address: "4/0/22"
+    invert_position: false
+    invert_updown: true
+    invert_angle: true
+    device_class: shade
+  - name: leinwand_glut
+    move_long_address: "4/0/23"
+    stop_address: "4/0/24"
+    invert_position: false
+    invert_updown: true
+    invert_angle: true
+    device_class: shade
+
+# Klima
+climate:
+  - name: "Lager"
+    temperature_address: "5/1/1"
+    target_temperature_address: "5/1/2"
+    target_temperature_state_address: "5/1/3"
+    operation_mode_address: "5/1/4"
+    operation_mode_state_address: "5/1/5"
+    command_value_state_address: "5/1/6"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/7"
+    setpoint_shift_state_address: "5/1/7"
+  - name: "Atemschutz Übergabe"
+    temperature_address: "5/1/11"
+    target_temperature_address: "5/1/12"
+    target_temperature_state_address: "5/1/13"
+    operation_mode_address: "5/1/14"
+    operation_mode_state_address: "5/1/15"
+    command_value_state_address: "5/1/16"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/17"
+    setpoint_shift_state_address: "5/1/17"
+  - name: "Schmutzraum Herren"
+    temperature_address: "5/1/21"
+    target_temperature_address: "5/1/22"
+    target_temperature_state_address: "5/1/23"
+    operation_mode_address: "5/1/24"
+    operation_mode_state_address: "5/1/25"
+    command_value_state_address: "5/1/26"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/27"
+    setpoint_shift_state_address: "5/1/27"
+  - name: "Schmutzraum Damen"
+    temperature_address: "5/1/31"
+    target_temperature_address: "5/1/32"
+    target_temperature_state_address: "5/1/33"
+    operation_mode_address: "5/1/34"
+    operation_mode_state_address: "5/1/35"
+    command_value_state_address: "5/1/36"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/37"
+    setpoint_shift_state_address: "5/1/37"
+  - name: "Umkleide"
+    temperature_address: "5/1/41"
+    target_temperature_address: "5/1/42"
+    target_temperature_state_address: "5/1/43"
+    operation_mode_address: "5/1/44"
+    operation_mode_state_address: "5/1/45"
+    command_value_state_address: "5/1/46"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/47"
+    setpoint_shift_state_address: "5/1/47"
+  - name: "WC Herren EG"
+    temperature_address: "5/1/51"
+    target_temperature_address: "5/1/52"
+    target_temperature_state_address: "5/1/53"
+    operation_mode_address: "5/1/54"
+    operation_mode_state_address: "5/1/55"
+    command_value_state_address: "5/1/56"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/57"
+    setpoint_shift_state_address: "5/1/57"
+  - name: "Dusche Herren"
+    temperature_address: "5/1/61"
+    target_temperature_address: "5/1/62"
+    target_temperature_state_address: "5/1/63"
+    operation_mode_address: "5/1/64"
+    operation_mode_state_address: "5/1/65"
+    command_value_state_address: "5/1/66"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/67"
+    setpoint_shift_state_address: "5/1/67"
+  - name: "WC Damen EG"
+    temperature_address: "5/1/71"
+    target_temperature_address: "5/1/72"
+    target_temperature_state_address: "5/1/73"
+    operation_mode_address: "5/1/74"
+    operation_mode_state_address: "5/1/75"
+    command_value_state_address: "5/1/76"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/77"
+    setpoint_shift_state_address: "5/1/77"
+  - name: "Dusche Damen"
+    temperature_address: "5/1/81"
+    target_temperature_address: "5/1/82"
+    target_temperature_state_address: "5/1/83"
+    operation_mode_address: "5/1/84"
+    operation_mode_state_address: "5/1/85"
+    command_value_state_address: "5/1/86"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/87"
+    setpoint_shift_state_address: "5/1/87"
+  - name: "Kleiderkammer EG"
+    temperature_address: "5/1/91"
+    target_temperature_address: "5/1/92"
+    target_temperature_state_address: "5/1/93"
+    operation_mode_address: "5/1/94"
+    operation_mode_state_address: "5/1/95"
+    command_value_state_address: "5/1/96"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/97"
+    setpoint_shift_state_address: "5/1/97"
+  - name: "Schlauchpflegewerkstatt"
+    temperature_address: "5/1/101"
+    target_temperature_address: "5/1/102"
+    target_temperature_state_address: "5/1/103"
+    operation_mode_address: "5/1/104"
+    operation_mode_state_address: "5/1/105"
+    command_value_state_address: "5/1/106"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/107"
+    setpoint_shift_state_address: "5/1/107"
+  - name: "Gerätewartbüro"
+    temperature_address: "5/1/111"
+    target_temperature_address: "5/1/112"
+    target_temperature_state_address: "5/1/113"
+    operation_mode_address: "5/1/114"
+    operation_mode_state_address: "5/1/115"
+    command_value_state_address: "5/1/116"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/117"
+    setpoint_shift_state_address: "5/1/117"
+  - name: "Atemschutz schwarz"
+    temperature_address: "5/1/121"
+    target_temperature_address: "5/1/122"
+    target_temperature_state_address: "5/1/123"
+    operation_mode_address: "5/1/124"
+    operation_mode_state_address: "5/1/125"
+    command_value_state_address: "5/1/126"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/127"
+    setpoint_shift_state_address: "5/1/127"
+  - name: "Atemschutz weiß"
+    temperature_address: "5/1/131"
+    target_temperature_address: "5/1/132"
+    target_temperature_state_address: "5/1/133"
+    operation_mode_address: "5/1/134"
+    operation_mode_state_address: "5/1/135"
+    command_value_state_address: "5/1/136"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/137"
+    setpoint_shift_state_address: "5/1/137"
+  - name: "Atemschutz auffüllen"
+    temperature_address: "5/1/141"
+    target_temperature_address: "5/1/142"
+    target_temperature_state_address: "5/1/143"
+    operation_mode_address: "5/1/144"
+    operation_mode_state_address: "5/1/145"
+    command_value_state_address: "5/1/146"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/147"
+    setpoint_shift_state_address: "5/1/147"
+  - name: "Atemschutz ausrüsten"
+    temperature_address: "5/1/151"
+    target_temperature_address: "5/1/152"
+    target_temperature_state_address: "5/1/153"
+    operation_mode_address: "5/1/154"
+    operation_mode_state_address: "5/1/155"
+    command_value_state_address: "5/1/156"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/157"
+    setpoint_shift_state_address: "5/1/157"
+  - name: "Atemschutz Lager"
+    temperature_address: "5/1/161"
+    target_temperature_address: "5/1/162"
+    target_temperature_state_address: "5/1/163"
+    operation_mode_address: "5/1/164"
+    operation_mode_state_address: "5/1/165"
+    command_value_state_address: "5/1/166"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/167"
+    setpoint_shift_state_address: "5/1/167"
+  - name: "Foyer EG"
+    temperature_address: "5/1/171"
+    target_temperature_address: "5/1/172"
+    target_temperature_state_address: "5/1/173"
+    operation_mode_address: "5/1/174"
+    operation_mode_state_address: "5/1/175"
+    command_value_state_address: "5/1/176"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/177"
+    setpoint_shift_state_address: "5/1/177"
+  - name: "Flur EG Neubau"
+    temperature_address: "5/1/181"
+    target_temperature_address: "5/1/182"
+    target_temperature_state_address: "5/1/183"
+    operation_mode_address: "5/1/184"
+    operation_mode_state_address: "5/1/185"
+    command_value_state_address: "5/1/186"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/1/187"
+    setpoint_shift_state_address: "5/1/187"
+  - name: "Foyer OG"
+    temperature_address: "5/2/1"
+    target_temperature_address: "5/2/2"
+    target_temperature_state_address: "5/2/3"
+    operation_mode_address: "5/2/4"
+    operation_mode_state_address: "5/2/5"
+    command_value_state_address: "5/2/6"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/7"
+    setpoint_shift_state_address: "5/2/7"
+  - name: "Feuer"
+    temperature_address: "5/2/11"
+    target_temperature_address: "5/2/12"
+    target_temperature_state_address: "5/2/13"
+    operation_mode_address: "5/2/14"
+    operation_mode_state_address: "5/2/15"
+    command_value_state_address: "5/2/16"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/17"
+    setpoint_shift_state_address: "5/2/17"
+  - name: "Flamme"
+    temperature_address: "5/2/21"
+    target_temperature_address: "5/2/22"
+    target_temperature_state_address: "5/2/23"
+    operation_mode_address: "5/2/24"
+    operation_mode_state_address: "5/2/25"
+    command_value_state_address: "5/2/26"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/27"
+    setpoint_shift_state_address: "5/2/27"
+  - name: "Glut"
+    temperature_address: "5/2/31"
+    target_temperature_address: "5/2/32"
+    target_temperature_state_address: "5/2/33"
+    operation_mode_address: "5/2/34"
+    operation_mode_state_address: "5/2/35"
+    command_value_state_address: "5/2/36"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/37"
+    setpoint_shift_state_address: "5/2/37"
+  - name: "Küche"
+    temperature_address: "5/2/41"
+    target_temperature_address: "5/2/42"
+    target_temperature_state_address: "5/2/43"
+    operation_mode_address: "5/2/44"
+    operation_mode_state_address: "5/2/45"
+    command_value_state_address: "5/2/46"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/47"
+    setpoint_shift_state_address: "5/2/47"
+  - name: "Speisekammer"
+    temperature_address: "5/2/51"
+    target_temperature_address: "5/2/52"
+    target_temperature_state_address: "5/2/53"
+    operation_mode_address: "5/2/54"
+    operation_mode_state_address: "5/2/55"
+    command_value_state_address: "5/2/56"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/57"
+    setpoint_shift_state_address: "5/2/57"
+  - name: "Stuhllager"
+    temperature_address: "5/2/61"
+    target_temperature_address: "5/2/62"
+    target_temperature_state_address: "5/2/63"
+    operation_mode_address: "5/2/64"
+    operation_mode_state_address: "5/2/65"
+    command_value_state_address: "5/2/66"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/67"
+    setpoint_shift_state_address: "5/2/67"
+  - name: "WC Damen OG"
+    temperature_address: "5/2/71"
+    target_temperature_address: "5/2/72"
+    target_temperature_state_address: "5/2/73"
+    operation_mode_address: "5/2/74"
+    operation_mode_state_address: "5/2/75"
+    command_value_state_address: "5/2/76"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/77"
+    setpoint_shift_state_address: "5/2/77"
+  - name: "WC Behinderte"
+    temperature_address: "5/2/81"
+    target_temperature_address: "5/2/82"
+    target_temperature_state_address: "5/2/83"
+    operation_mode_address: "5/2/84"
+    operation_mode_state_address: "5/2/85"
+    command_value_state_address: "5/2/86"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/87"
+    setpoint_shift_state_address: "5/2/87"
+  - name: "WC Herren OG"
+    temperature_address: "5/2/91"
+    target_temperature_address: "5/2/92"
+    target_temperature_state_address: "5/2/93"
+    operation_mode_address: "5/2/94"
+    operation_mode_state_address: "5/2/95"
+    command_value_state_address: "5/2/96"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/97"
+    setpoint_shift_state_address: "5/2/97"
+  - name: "Flur OG"
+    temperature_address: "5/2/101"
+    target_temperature_address: "5/2/102"
+    target_temperature_state_address: "5/2/103"
+    operation_mode_address: "5/2/104"
+    operation_mode_state_address: "5/2/105"
+    command_value_state_address: "5/2/106"
+    setpoint_shift_mode: "DPT9002"
+    setpoint_shift_address: "5/2/107"
+    setpoint_shift_state_address: "5/2/107"
+
+# Wetterstation
+weather:
+  - name: "Wetterstation"
+    address_temperature: "0/1/20"
+    address_wind_speed: "0/1/40"
+    address_wind_alarm: "0/1/41"
+    address_rain_alarm: "0/1/10"
+    address_frost_alarm: "0/1/25"
+    address_brightness_north: "0/1/30"
+    sync_state: true
