@@ -11,3 +11,4 @@ secrets.yaml
 home-assistant.log*
 home-assistant_v2.db*
 music_assistant.db
+go2rtc*
