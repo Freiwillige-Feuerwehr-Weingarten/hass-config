@@ -1,0 +1,13 @@
+.storage
+appdaemon/**
+blueprints/**
+custom_components/**
+image/**
+node-red/**
+themes/**
+tts/**
+www/**
+secrets.yaml
+home-assistant.log*
+home-assistant_v2.db*
+music_assistant.db
