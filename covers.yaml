@@ -1,0 +1,885 @@
+- platform: template
+  covers:
+    garage_halle1:
+      device_class: garage
+      friendly_name: "Halle 1 - KdoW"
+      unique_id: "halle1_"
+      value_template: "{{ is_state('switch.halle1_tor_auf', 'on') }}"
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle1_tor_auf
+        - service: switch.turn_off
+          target:
+            entity_id:
+              - switch.halle1_tor_stop
+              - switch.halle1_tor_zu
+      close_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle1_tor_zu
+        - service: switch.turn_off
+          target:
+            entity_id:
+              - switch.halle1_tor_stop
+              - switch.halle1_tor_auf
+      stop_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle1_tor_stop
+        - service: switch.turn_off
+          target:
+            entity_id:
+              - switch.halle1_tor_zu
+              - switch.halle1_tor_auf
+      icon_template: >-
+        {% if is_state('switch.halle1_tor_auf', 'on') %}
+          mdi:garage-open-variant
+        {% else %}
+          mdi:garage-variant
+        {% endif %}
+
+    garage_halle2:
+      device_class: garage
+      friendly_name: "Halle 2 - MTW-1"
+      unique_id: "halle2_"
+      value_template: "{{ is_state('switch.halle2_tor_auf', 'on') }}"
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle2_tor_auf
+      close_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle2_tor_zu
+      stop_cover:
+        service: switch.turn_on
+        target:
+          entity_id: switch.halle2_tor_stop
+      icon_template: >-
+        {% if is_state('switch.halle2_tor_auf', 'on') %}
+          mdi:garage-open-variant
+        {% else %}
+          mdi:garage-variant
+        {% endif %}
+
+    garage_halle3:
+      device_class: garage
+      friendly_name: "Halle 3 - MTW-2 und Anhänger"
+      unique_id: "halle3_"
+      value_template: "{{ is_state('switch.halle3_tor_auf', 'on') }}"
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle3_tor_auf
+      close_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle3_tor_zu
+      stop_cover:
+        service: switch.turn_on
+        target:
+          entity_id: switch.halle3_tor_stop
+      icon_template: >-
+        {% if is_state('switch.halle3_tor_auf', 'on') %}
+          mdi:garage-open-variant
+        {% else %}
+          mdi:garage-variant
+        {% endif %}
+
+    garage_halle4:
+      device_class: garage
+      friendly_name: "Halle 4 - GW-Hy"
+      unique_id: "halle4_"
+      value_template: "{{ is_state('switch.halle4_tor_auf', 'on') }}"
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle4_tor_auf
+      close_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle4_tor_zu
+      stop_cover:
+        service: switch.turn_on
+        target:
+          entity_id: switch.halle4_tor_stop
+      icon_template: >-
+        {% if is_state('switch.halle4_tor_auf', 'on') %}
+          mdi:garage-open-variant
+        {% else %}
+          mdi:garage-variant
+        {% endif %}
+
+    garage_halle5:
+      device_class: garage
+      friendly_name: "Halle 5 - Lima Anhänger"
+      unique_id: "halle5_"
+      value_template: "{{ is_state('switch.halle5_tor_auf', 'on') }}"
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle5_tor_auf
+      close_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle5_tor_zu
+      stop_cover:
+        service: switch.turn_on
+        target:
+          entity_id: switch.halle5_tor_stop
+      icon_template: >-
+        {% if is_state('switch.halle5_tor_auf', 'on') %}
+          mdi:garage-open-variant
+        {% else %}
+          mdi:garage-variant
+        {% endif %}
+
+    garage_halle6:
+      device_class: garage
+      friendly_name: "Halle 6 - GW-T"
+      unique_id: "halle6_"
+      value_template: "{{ is_state('switch.halle6_tor_auf', 'on') }}"
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle6_tor_auf
+      close_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle6_tor_zu
+      stop_cover:
+        service: switch.turn_on
+        target:
+          entity_id: switch.halle6_tor_stop
+      icon_template: >-
+        {% if is_state('switch.halle6_tor_auf', 'on') %}
+          mdi:garage-open-variant
+        {% else %}
+          mdi:garage-variant
+        {% endif %}
+
+    garage_halle7:
+      device_class: garage
+      friendly_name: "Halle 7 - Stapler"
+      unique_id: "halle7_"
+      value_template: "{{ is_state('switch.halle7_tor_auf', 'on') }}"
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle7_tor_auf
+      close_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle7_tor_zu
+      stop_cover:
+        service: switch.turn_on
+        target:
+          entity_id: switch.halle7_tor_stop
+      icon_template: >-
+        {% if is_state('switch.halle7_tor_auf', 'on') %}
+          mdi:garage-open-variant
+        {% else %}
+          mdi:garage-variant
+        {% endif %}
+
+    garage_halle8:
+      device_class: garage
+      friendly_name: "Halle 8 - NEA / DL19"
+      unique_id: "halle8_"
+      value_template: "{{ is_state('switch.halle8_tor_auf', 'on') }}"
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle8_tor_auf
+      close_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle8_tor_zu
+      stop_cover:
+        service: switch.turn_on
+        target:
+          entity_id: switch.halle8_tor_stop
+      icon_template: >-
+        {% if is_state('switch.halle8_tor_auf', 'on') %}
+          mdi:garage-open-variant
+        {% else %}
+          mdi:garage-variant
+        {% endif %}
+
+    garage_halle9:
+      device_class: garage
+      friendly_name: "Halle 9 - Leer"
+      unique_id: "halle9_"
+      value_template: "{{ is_state('switch.halle9_tor_auf', 'on') }}"
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle9_tor_auf
+      close_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle9_tor_zu
+      stop_cover:
+        service: switch.turn_on
+        target:
+          entity_id: switch.halle9_tor_stop
+      icon_template: >-
+        {% if is_state('switch.halle9_tor_auf', 'on') %}
+          mdi:garage-open-variant
+        {% else %}
+          mdi:garage-variant
+        {% endif %}
+
+    garage_halle10:
+      device_class: garage
+      friendly_name: "Halle 10 - Waschhalle"
+      unique_id: "halle10_"
+      value_template: "{{ is_state('switch.halle10_tor_auf', 'on') }}"
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle10_tor_auf
+      close_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle10_tor_zu
+      stop_cover:
+        service: switch.turn_on
+        target:
+          entity_id: switch.halle10_tor_stop
+      icon_template: >-
+        {% if is_state('switch.halle10_tor_auf', 'on') %}
+          mdi:garage-open-variant
+        {% else %}
+          mdi:garage-variant
+        {% endif %}
+
+# Neubau
+    garage_halle11:
+      device_class: gate
+      friendly_name: "Halle 11 - ELW und VRW"
+      unique_id: "halle11_"
+      value_template: >-
+        {% if is_state('binary_sensor.bs_halle11_1_auf', 'on') and is_state('binary_sensor.bs_halle11_2_auf', 'on') %}
+          Open
+        {% elif is_state('binary_sensor.bs_halle11_1_zu', 'on') and is_state('binary_sensor.bs_halle11_2_zu', 'on') %}
+          Closed
+        {% elif is_state("input_select.is_halle11_bewegungsrichtung", 'Closing') %}
+          Closing
+        {% elif is_state("input_select.is_halle11_bewegungsrichtung", 'Opening') %}
+          Opening
+        {% elif is_state("input_select.is_halle11_bewegungsrichtung", 'Stopped') %}
+          Stopped
+        {% endif %}
+      open_cover:
+        - service: button.press
+          target:
+            entity_id:
+              - button.bt_halle11_1_tor_auf
+              - button.bt_halle11_2_tor_auf
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle11_bewegungsrichtung
+          data:
+            option: Opening
+      close_cover:
+        - service: button.press
+          target:
+            entity_id:
+              - button.bt_halle11_1_tor_zu
+              - button.bt_halle11_2_tor_zu
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle11_bewegungsrichtung
+          data:
+            option: Closing
+      stop_cover:
+        - service: button.press
+          target:
+            entity_id:
+              - button.bt_halle11_1_tor_stop
+              - button.bt_halle11_2_tor_stop
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle11_bewegungsrichtung
+          data:
+            option: Stopped
+      icon_template: >-
+        {% if is_state('binary_sensor.bs_halle11_1_auf', 'on') and is_state('binary_sensor.bs_halle11_2_auf', 'on') %}
+          mdi:gate-open
+        {% elif is_state('binary_sensor.bs_halle11_1_zu', 'on') and is_state('binary_sensor.bs_halle11_2_zu', 'on') %}
+          mdi:gate
+        {% elif is_state("input_select.is_halle11_bewegungsrichtung", 'Closing') %}
+          mdi:arrow-collapse-horizontal
+        {% elif is_state("input_select.is_halle11_bewegungsrichtung", 'Opening') %}
+          mdi:arrow-expand-horizontal
+        {% endif %}
+
+    garage_halle12:
+      device_class: gate
+      friendly_name: "Halle 12 - RW2"
+      unique_id: "halle12_"
+      value_template: >-
+        {% if is_state('binary_sensor.bs_halle12_auf', 'on') %}
+          Open
+        {% elif is_state('binary_sensor.bs_halle12_zu', 'on') %}
+          Closed
+        {% elif is_state("input_select.is_halle12_bewegungsrichtung", 'Closing') %}
+          Closing
+        {% elif is_state("input_select.is_halle12_bewegungsrichtung", 'Opening') %}
+          Opening
+        {% elif is_state("input_select.is_halle12_bewegungsrichtung", 'Stopped') %}
+          Stopped
+        {% endif %}
+      open_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle12_tor_auf
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle12_bewegungsrichtung
+          data:
+            option: Opening
+      close_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle12_tor_zu
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle12_bewegungsrichtung
+          data:
+            option: Closing
+      stop_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle12_tor_stop
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle12_bewegungsrichtung
+          data:
+            option: Stopped
+      icon_template: >-
+        {% if is_state('binary_sensor.bs_halle12_auf', 'on') %}
+          mdi:gate-open
+        {% elif is_state('binary_sensor.bs_halle12_zu', 'on') %}
+          mdi:gate
+        {% elif is_state("input_select.is_halle12_bewegungsrichtung", 'Closing') %}
+          mdi:arrow-collapse-horizontal
+        {% elif is_state("input_select.is_halle12_bewegungsrichtung", 'Opening') %}
+          mdi:arrow-expand-horizontal
+        {% endif %}
+
+    garage_halle13:
+      device_class: gate
+      friendly_name: "Halle 13 - HLF"
+      unique_id: "halle13_"
+      value_template: >-
+        {% if is_state('binary_sensor.bs_halle13_auf', 'on') %}
+          Open
+        {% elif is_state('binary_sensor.bs_halle13_zu', 'on') %}
+          Closed
+        {% elif is_state("input_select.is_halle13_bewegungsrichtung", 'Closing') %}
+          Closing
+        {% elif is_state("input_select.is_halle13_bewegungsrichtung", 'Opening') %}
+          Opening
+        {% elif is_state("input_select.is_halle13_bewegungsrichtung", 'Stopped') %}
+          Stopped
+        {% endif %}
+      open_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle13_tor_auf
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle13_bewegungsrichtung
+          data:
+            option: Opening
+      close_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle13_tor_zu
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle13_bewegungsrichtung
+          data:
+            option: Closing
+      stop_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle13_tor_stop
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle13_bewegungsrichtung
+          data:
+            option: Stopped
+      icon_template: >-
+        {% if is_state('binary_sensor.bs_halle13_auf', 'on') %}
+          mdi:gate-open
+        {% elif is_state('binary_sensor.bs_halle13_zu', 'on') %}
+          mdi:gate
+        {% elif is_state("input_select.is_halle13_bewegungsrichtung", 'Closing') %}
+          mdi:arrow-collapse-horizontal
+        {% elif is_state("input_select.is_halle13_bewegungsrichtung", 'Opening') %}
+          mdi:arrow-expand-horizontal
+        {% endif %}
+
+    garage_halle14:
+      device_class: gate
+      friendly_name: "Halle 14 - DLK"
+      unique_id: "halle14_"
+      value_template: >-
+        {% if is_state('binary_sensor.bs_halle14_auf', 'on') %}
+          Open
+        {% elif is_state('binary_sensor.bs_halle14_zu', 'on') %}
+          Closed
+        {% elif is_state("input_select.is_halle14_bewegungsrichtung", 'Closing') %}
+          Closing
+        {% elif is_state("input_select.is_halle14_bewegungsrichtung", 'Opening') %}
+          Opening
+        {% elif is_state("input_select.is_halle14_bewegungsrichtung", 'Stopped') %}
+          Stopped
+        {% endif %}
+      open_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle14_tor_auf
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle14_bewegungsrichtung
+          data:
+            option: Opening
+      close_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle14_tor_zu
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle14_bewegungsrichtung
+          data:
+            option: Closing
+      stop_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle14_tor_stop
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle14_bewegungsrichtung
+          data:
+            option: Stopped
+      icon_template: >-
+        {% if is_state('binary_sensor.bs_halle14_auf', 'on') %}
+          mdi:gate-open
+        {% elif is_state('binary_sensor.bs_halle14_zu', 'on') %}
+          mdi:gate
+        {% elif is_state("input_select.is_halle14_bewegungsrichtung", 'Closing') %}
+          mdi:arrow-collapse-horizontal
+        {% elif is_state("input_select.is_halle14_bewegungsrichtung", 'Opening') %}
+          mdi:arrow-expand-horizontal
+        {% endif %}
+
+    garage_halle15:
+      device_class: gate
+      friendly_name: "Halle 15 - LF1"
+      unique_id: "halle15_"
+      value_template: >-
+        {% if is_state('binary_sensor.bs_halle15_auf', 'on') %}
+          Open
+        {% elif is_state('binary_sensor.bs_halle15_zu', 'on') %}
+          Closed
+        {% elif is_state("input_select.is_halle15_bewegungsrichtung", 'Closing') %}
+          Closing
+        {% elif is_state("input_select.is_halle15_bewegungsrichtung", 'Opening') %}
+          Opening
+        {% elif is_state("input_select.is_halle15_bewegungsrichtung", 'Stopped') %}
+          Stopped
+        {% endif %}
+      open_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle15_tor_auf
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle15_bewegungsrichtung
+          data:
+            option: Opening
+      close_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle15_tor_zu
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle15_bewegungsrichtung
+          data:
+            option: Closing
+      stop_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle15_tor_stop
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle15_bewegungsrichtung
+          data:
+            option: Stopped
+      icon_template: >-
+        {% if is_state('binary_sensor.bs_halle15_auf', 'on') %}
+          mdi:gate-open
+        {% elif is_state('binary_sensor.bs_halle15_zu', 'on') %}
+          mdi:gate
+        {% elif is_state("input_select.is_halle15_bewegungsrichtung", 'Closing') %}
+          mdi:arrow-collapse-horizontal
+        {% elif is_state("input_select.is_halle15_bewegungsrichtung", 'Opening') %}
+          mdi:arrow-expand-horizontal
+        {% endif %}
+
+    garage_halle16:
+      device_class: gate
+      friendly_name: "Halle 16 - LF2"
+      unique_id: "halle16_"
+      value_template: >-
+        {% if is_state('binary_sensor.bs_halle16_auf', 'on') %}
+          Open
+        {% elif is_state('binary_sensor.bs_halle16_zu', 'on') %}
+          Closed
+        {% elif is_state("input_select.is_halle16_bewegungsrichtung", 'Closing') %}
+          Closing
+        {% elif is_state("input_select.is_halle16_bewegungsrichtung", 'Opening') %}
+          Opening
+        {% elif is_state("input_select.is_halle16_bewegungsrichtung", 'Stopped') %}
+          Stopped
+        {% endif %}
+      open_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle16_tor_auf
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle16_bewegungsrichtung
+          data:
+            option: Opening
+      close_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle16_tor_zu
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle16_bewegungsrichtung
+          data:
+            option: Closing
+      stop_cover:
+        - service: button.press
+          target:
+            entity_id: button.bt_halle16_tor_stop
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle16_bewegungsrichtung
+          data:
+            option: Stopped
+      icon_template: >-
+        {% if is_state('binary_sensor.bs_halle16_auf', 'on') %}
+          mdi:gate-open
+        {% elif is_state('binary_sensor.bs_halle16_zu', 'on') %}
+          mdi:gate
+        {% elif is_state("input_select.is_halle16_bewegungsrichtung", 'Closing') %}
+          mdi:arrow-collapse-horizontal
+        {% elif is_state("input_select.is_halle16_bewegungsrichtung", 'Opening') %}
+          mdi:arrow-expand-horizontal
+        {% endif %}
+
+    garage_halle17:
+      device_class: gate
+      friendly_name: "Halle 17 - GW-A"
+      unique_id: "halle17_"
+      value_template: >-
+        {% if is_state('binary_sensor.bs_halle17_1_auf', 'on') and is_state('binary_sensor.bs_halle17_2_auf', 'on') %}
+          Open
+        {% elif is_state('binary_sensor.bs_halle17_1_zu', 'on') and is_state('binary_sensor.bs_halle17_2_zu', 'on') %}
+          Closed
+        {% elif is_state("input_select.is_halle17_bewegungsrichtung", 'Closing') %}
+          Closing
+        {% elif is_state("input_select.is_halle17_bewegungsrichtung", 'Opening') %}
+          Opening
+        {% elif is_state("input_select.is_halle17_bewegungsrichtung", 'Stopped') %}
+          Stopped
+        {% endif %}
+      open_cover:
+        - service: button.press
+          target:
+            entity_id:
+              - button.bt_halle17_1_tor_auf
+              - button.bt_halle17_2_tor_auf
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle17_bewegungsrichtung
+          data:
+            option: Opening
+      close_cover:
+        - service: button.press
+          target:
+            entity_id:
+              - button.bt_halle17_1_tor_zu
+              - button.bt_halle17_2_tor_zu
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle17_bewegungsrichtung
+          data:
+            option: Closing
+      stop_cover:
+        - service: button.press
+          target:
+            entity_id:
+              - button.bt_halle17_1_tor_stop
+              - button.bt_halle17_2_tor_stop
+        - service: input_select.select_option
+          target:
+            entity_id: input_select.is_halle17_bewegungsrichtung
+          data:
+            option: Stopped
+      icon_template: >-
+        {% if is_state('binary_sensor.bs_halle17_1_auf', 'on') and is_state('binary_sensor.bs_halle17_2_auf', 'on') %}
+          mdi:gate-open
+        {% elif is_state('binary_sensor.bs_halle1_1_zu', 'on') and is_state('binary_sensor.bs_halle17_2_zu', 'on') %}
+          mdi:gate
+        {% elif is_state("input_select.is_halle17_bewegungsrichtung", 'Closing') %}
+          mdi:arrow-collapse-horizontal
+        {% elif is_state("input_select.is_halle17_bewegungsrichtung", 'Opening') %}
+          mdi:arrow-expand-horizontal
+        {% endif %}
+
+    cover_schranke_lkw:
+      friendly_name: "Schranke LKW"
+      unique_id: "cover_schranke_lkw"
+      value_template: >-
+        {% if is_state('switch.schranke_lkw_dauer_auf', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.schranke_lkw_dauer_auf
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.schranke_lkw_dauer_auf
+      icon_template: >-
+        {% if is_state('switch.schranke_lkw_dauer_auf', 'on') %}
+          mdi:boom-gate-up
+        {% else %}
+          mdi:boom-gate
+        {% endif %}
+
+    cover_schranke_pkw:
+      friendly_name: "Schranke PKW"
+      unique_id: "cover_schranke_pkw"
+      value_template: >-
+        {% if is_state('switch.schranke_pkw_dauer_auf', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.schranke_pkw_dauer_auf
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.schranke_pkw_dauer_auf
+      icon_template: >-
+        {% if is_state('switch.schranke_pkw_dauer_auf', 'on') %}
+          mdi:boom-gate-up
+        {% else %}
+          mdi:boom-gate
+        {% endif %}
+
+    door_halle_1:
+      device_class: door
+      friendly_name: "Tür Halle 1"
+      unique_id: "door_halle_1_"
+      value_template: >-
+        {% if is_state('switch.halle1_tur_status', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.halle1_tur_status
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.halle1_tur_status
+
+    door_alarmeingang:
+      device_class: door
+      friendly_name: "Alarmeingang"
+      unique_id: "door_alarmeingang_"
+      value_template: >-
+        {% if is_state('switch.alarmeingang', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.alarmeingang
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.alarmeingang
+
+    door_haupteingang:
+      device_class: door
+      friendly_name: "Haupteingang"
+      unique_id: "door_haupteingang_"
+      value_template: >-
+        {% if is_state('switch.haupteingang_tur_status', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.haupteingang_tur_status
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.haupteingang_tur_status
+
+    door_nebeneingang_eg:
+      device_class: door
+      friendly_name: "Nebeneingang EG"
+      unique_id: "door_nebeneingang_eg_"
+      value_template: >-
+        {% if is_state('switch.nebeneingang_tur_eg', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.nebeneingang_tur_eg
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.nebeneingang_tur_eg
+
+    door_nebeneingang_og:
+      device_class: door
+      friendly_name: "Nebeneingang OG"
+      unique_id: "door_nebeneingang_og_"
+      value_template: >-
+        {% if is_state('switch.nebeneingang_tur_og', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.nebeneingang_tur_og
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.nebeneingang_tur_og
+
+    door_umkleide_damen:
+      device_class: door
+      friendly_name: "Umkleide Damen"
+      unique_id: "door_umkleide_damen_"
+      value_template: >-
+        {% if is_state('switch.t_umkleide_damen', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.t_umkleide_damen
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.t_umkleide_damen
+
+    door_umkleide_mitte:
+      device_class: door
+      friendly_name: "Umkleide Mitte"
+      unique_id: "door_umkleide_mitte_"
+      value_template: >-
+        {% if is_state('switch.t_unkleide_mitte', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.t_unkleide_mitte
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.t_unkleide_mitte
+
+    door_umkleide_herren:
+      device_class: door
+      friendly_name: "Umkleide Herren"
+      unique_id: "door_umkleide_herren_"
+      value_template: >-
+        {% if is_state('switch.t_unkleide_herren', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.t_unkleide_herren
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.t_unkleide_herren
+
+    door_fahrzeughalle_neu:
+      device_class: door
+      friendly_name: "Fahrzeughalle"
+      unique_id: "door_fahrzeughalle_"
+      value_template: >-
+        {% if is_state('switch.t_halle', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.t_halle
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.t_halle
+
+    door_treppenhaus:
+      device_class: door
+      friendly_name: "Treppenhaus"
+      unique_id: "door_treppenhaus_"
+      value_template: >-
+        {% if is_state('switch.t_treppenhaus', 'on') %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      open_cover:
+        - service: switch.turn_on
+          target:
+            entity_id: switch.t_treppenhaus
+      close_cover:
+        - service: switch.turn_off
+          target:
+            entity_id: switch.t_treppenhaus
