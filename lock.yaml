@@ -1,0 +1,129 @@
+- platform: template
+  name: tuer_altbau
+  unique_id: tuer_altbau
+  value_template: "{% if is_state('switch.halle1_tur_status', 'off')%}locked{% else %}unlocked{% endif %}"
+  lock:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.halle1_tur_status
+  unlock:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.halle1_tur_status
+
+- platform: template
+  name: tuer_haupteingang
+  unique_id: tuer_haupteingang
+  value_template: "{% if is_state('switch.haupteingang_tur_status', 'off')%}locked{% else %}unlocked{% endif %}"
+  lock:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.haupteingang_tur_status
+  unlock:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.haupteingang_tur_status
+
+- platform: template
+  name: nebeneingang_tur_eg
+  unique_id: nebeneingang_tur_eg
+  value_template: "{% if is_state('switch.nebeneingang_tur_eg', 'off')%}locked{% else %}unlocked{% endif %}"
+  lock:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.nebeneingang_tur_eg
+  unlock:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.nebeneingang_tur_eg
+
+- platform: template
+  name: nebeneingang_tur_og
+  unique_id: nebeneingang_tur_og
+  value_template: "{% if is_state('switch.nebeneingang_tur_og', 'off')%}locked{% else %}unlocked{% endif %}"
+  lock:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.nebeneingang_tur_og
+  unlock:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.nebeneingang_tur_og
+
+- platform: template
+  name: tuer_umkleide_damen
+  unique_id: tuer_umkleide_damen
+  value_template: "{% if is_state('switch.t_umkleide_damen', 'off')%}locked{% else %}unlocked{% endif %}"
+  lock:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.t_umkleide_damen
+  unlock:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.t_umkleide_damen
+
+- platform: template
+  name: tuer_umkleide_mitte
+  unique_id: tuer_umkleide_mitte
+  value_template: "{% if is_state('switch.t_unkleide_mitte', 'off')%}locked{% else %}unlocked{% endif %}"
+  lock:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.t_unkleide_mitte
+  unlock:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.t_unkleide_mitte
+  
+- platform: template
+  name: tuer_umkleide_herren
+  unique_id: tuer_umkleide_herren
+  value_template: "{% if is_state('switch.t_unkleide_herren', 'off')%}locked{% else %}unlocked{% endif %}"
+  lock:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.t_unkleide_herren
+  unlock:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.t_unkleide_herren
+
+- platform: template
+  name: tuer_halle
+  unique_id: tuer_halle
+  value_template: "{% if is_state('switch.t_halle', 'off')%}locked{% else %}unlocked{% endif %}"
+  lock:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.t_halle
+  unlock:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.t_halle
+
+- platform: template
+  name: tuer_treppenhaus
+  unique_id: tuer_treppenhaus
+  value_template: "{% if is_state('switch.t_halle', 'off')%}locked{% else %}unlocked{% endif %}"
+  lock:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.t_treppenhaus
+  unlock:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.t_treppenhaus
+
+- platform: template
+  name: tuer_alarmeingang
+  unique_id: tuer_alarmeingang
+  value_template: "{% if is_state('switch.t_halle', 'off')%}locked{% else %}unlocked{% endif %}"
+  lock:
+    - service: switch.turn_off
+      target:
+        entity_id: switch.alarmeingang
+  unlock:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.alarmeingang
