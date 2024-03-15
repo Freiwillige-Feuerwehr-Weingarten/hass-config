@@ -1,0 +1,389 @@
+light.atemschutz_ausruesten_eg:
+  friendly_name: Atemschutz ausrüsten
+light.atemschutz_befuellung_eg:
+  friendly_name: Atemschutz befüllen
+light.atemschutz_lager_eg:
+  friendly_name: Atemschutz Lager
+light.atemschutz_schwarz_eg:
+  friendly_name: Atemschutz schwarz
+light.atemschutz_uebergabe_eg:
+  friendly_name: Atemschutz Übergabe
+light.atemschutz_weiss_eg:
+  friendly_name: Atemscchutz weiß
+light.atemschutzwerkstatt:
+  friendly_name: Wäscherei
+light.aussen_gesamt:
+  friendly_name: Außen
+light.aussen_kanal_2:
+  friendly_name: ka
+light.aussen_kanal_a:
+  friendly_name: Parkplätze
+light.mastlampen:
+  friendly_name: Mastlampen am Turm
+light.aussenleuchte_alarmeingang:
+  friendly_name: Fassadenlampe Alarmeingang
+light.aussenleuchte_nebeneingang_eg:
+  friendly_name: Fassadenlampe Nebeneingang EG
+light.aussenleuchte_nebeneingang_og:
+  friendly_name: Fassadenlampe Nebeneingang OG
+light.batterieraum:
+  friendly_name: Batterieraum
+light.behinderten_wc_og:
+  friendly_name: WC Behinderte
+light.besprechungsraum_gesamt:
+  friendly_name: Führungsraum
+light.besprechungsraum_gruppe1:
+  friendly_name: Leinwand
+light.besprechungsraum_gruppe2:
+  friendly_name: Mitte
+light.besprechungsraum_gruppe3:
+  friendly_name: Durchgang
+light.damen_dusche_eg:
+  friendly_name: Dusche Damen
+light.damen_schmutzraum_eg:
+  friendly_name: Schmutzraum Damen
+light.damen_wc_eg:
+  friendly_name: WC Damen EG
+light.damen_wc_og:
+  friendly_name: WC Damen OG
+light.eg_gesamt_aus:
+  friendly_name: EG Gesamt aus
+light.eg_gesamt_ein:
+  friendly_name: EG Gesamt ein
+light.elektroraum_eg:
+  friendly_name: Elektroraum EG
+light.fassade_halle_neu:
+  friendly_name: Fassadenlampen Anbau
+light.flur_a_eg:
+  friendly_name: Flur EG A
+light.flur_altbau_eg:
+  friendly_name: Flur EG Altbau
+light.flur_b_eg:
+  friendly_name: Flur EG B
+light.flur_fahrzeughalle_eg:
+  friendly_name: Flur Fahrzeughalle
+light.flur_og:
+  friendly_name: Flur OG
+light.foyer_eg:
+  friendly_name: Foyer EG
+light.foyer_og:
+  friendly_name: Foyer OG
+light.geraetewart_eg:
+  friendly_name: Gerätewarte
+light.getraenkelager_og:
+  friendly_name: Getränkelager
+light.halle_durchgang:
+  friendly_name: Durchgangs Beleuchtung Altbau
+light.heizungsraum:
+  friendly_name: Heizungsraum
+light.hoflampe_haupteingang:
+  friendly_name: Hoflampe Halle 1
+light.hoflampe_werkstatt:
+  friendly_name: Hoflampe Werkstatt
+light.halle_gesamt_aus:
+  friendly_name: Halle Gesamt aus
+light.halle_gesamt_ein:
+  friendly_name: Halle Gesamt ein
+light.halle1:
+  friendly_name: Halle 1 - KdoW
+light.halle3:
+  friendly_name: Halle 3 - MTW-1
+light.halle2:
+  friendly_name: Halle 2 - MTW-2 und Anhänger
+light.halle4:
+  friendly_name: Halle 4 - GW-Hy
+light.halle5:
+  friendly_name: Halle 5 - LiMa
+light.halle6:
+  friendly_name: Halle 6 - GW-T
+light.halle7:
+  friendly_name: Halle 7 - Stapler
+light.halle8:
+  friendly_name: Halle 8 - NEA / DL19
+light.halle9:
+  friendly_name: Halle 9 - Leer
+light.halle10:
+  friendly_name: Halle 10 - Waschhalle
+light.halle11:
+  friendly_name: Halle 11 - VRW und ELW
+light.halle12:
+  friendly_name: Halle 12 - RW2
+light.halle13:
+  friendly_name: Halle 13 - HLF
+light.halle14:
+  friendly_name: Halle 14 - DLK
+light.halle15:
+  friendly_name: Halle 15 - LF1
+light.halle16:
+  friendly_name: Halle 16 - LF2
+light.halle17:
+  friendly_name: Halle 17 - GWA
+light.herren_dusche_eg:
+  friendly_name: Duscher Herren EG
+light.herren_schmutzraum_eg:
+  friendly_name: Schmutzraum Herren
+light.herren_umkleide_eg:
+  friendly_name: Umkleide Herren
+light.herren_wc_eg:
+  friendly_name: WC Herren EG
+light.herren_wc_og:
+  friendly_name: WC Herren OG
+light.kellerflur:
+  friendly_name: Kellerflur
+light.kleiderkammer_eg:
+  friendly_name: Kleiderkammer EG
+light.kompressorraum:
+  friendly_name: Kompressorraum
+light.lager_eg:
+  friendly_name: Lager EG
+light.lehrsaal_1:
+  friendly_name: Feuer Raum
+light.lehrsaal_1_leinwand:
+  friendly_name: Feuer Leinwand
+light.lehrsaal_2:
+  friendly_name: Flamme Raum
+light.lehrsaal_3:
+  friendly_name: Glut Raum
+light.lehrsaal_3_leinwand:
+  friendly_name: Glut Leinwand
+light.leitstand_gesamt:
+  friendly_name: Leitstand
+light.leitstand_gruppe1:
+  friendly_name: Arbeitsplätze
+light.leitstand_gruppe2:
+  friendly_name: Eingangsbereich
+light.muellraum_eg:
+  friendly_name: Müllraum
+light.schlauchpflege_eg:
+  friendly_name: Schlauchpflege
+light.serverraum:
+  friendly_name: Serverraum
+light.stuhllager_og:
+  friendly_name: Stuhllager
+light.technik_eg:
+  friendly_name: Technikraum EG
+light.technikraum:
+  friendly_name: Technikraum
+light.teekueche_og:
+  friendly_name: Teeküche
+light.theke:
+  friendly_name: Theke
+light.turm_test_gnarf:
+  friendly_name: Turm
+light.ug_aufzug:
+  friendly_name: Aufzug
+light.vordach:
+  friendly_name: Fassadenlampen Altbau
+
+
+# Switch
+switch.alarm_ruecksetzen:
+  friendly_name: Alarm zurücksetzen
+
+# Binary Sensor
+binary_sensor.wetterstation_regenalarm:
+  friendly_name: Regenalarm
+binary_sensor.wetterstation_dammerung_grenzwert_1:
+  friendly_name: Dämmerung Grenzwert 1
+binary_sensor.wetterstation_dammerung_grenzwert_2:
+  friendly_name: Dämmerung Grenzwert 2
+binary_sensor.wetterstation_windstarke_grenzwert:
+  friendly_name: Windstärke Grenzwert
+binary_sensor.wetterstation_temperatur_grenzwert_1:
+  friendly_name: Frostalarm
+
+# Sensors
+sensor.apc_leitstand_1_battery_charge:
+  friendly_name: Leitstand USV 1
+sensor.apc_leitstand_2_battery_charge:
+  friendly_name: Leitstand USV 2
+sensor.apc_leitstand_3_battery_charge:
+  friendly_name: Leitstand USV 3
+sensor.altbau1_akku_ladung:
+  friendly_name: Serverraum USV 1
+sensor.altbau1_last:
+  friendly_name: Serverraum USV 1 Last
+sensor.altbau2_akku_ladung:
+  friendly_name: Serverraum USV 2
+sensor.altbau2_last:
+  friendly_name: Serverraum USV 2 Last
+sensor.anbau1_akku_ladung:
+  friendly_name: Lager USV 1
+sensor.anbau1_last:
+  friendly_name: Lager USV 1 Last
+sensor.anbau2_akku_ladung:
+  friendly_name: Lager USV 2
+sensor.anbau2_last:
+  friendly_name: Lager USV 1 Last
+sensor.ipad_vrw_feuerwehr_weingarten_battery_level:
+  friendly_name: iPad VRW Akkustand
+sensor.ipad_elw_feuerwehr_weingarten_battery_level:
+  friendly_name: iPad ELW Akkustand
+sensor.ipad_rw2_feuerwehr_weingarten_battery_level:
+  friendly_name: iPad RW2 Akkustand
+sensor.ipad_lf1_feuerwehr_weingarten_battery_level:
+  friendly_name: iPad LF1 Akkustand
+sensor.ipad_lf2_feuerwehr_weingarten_battery_level:
+  friendly_name: iPad LF2 Akkustand
+sensor.ipad_dlk_feuerwehr_weingarten_battery_level:
+  friendly_name: iPad DLK Akkustand
+sensor.ipad_hlf_battery_level:
+  friendly_name: iPad HLF Akkustand
+sensor.ipad_fahrzeughalle_links_battery_level:
+  friendly_name: iPad Fahrzeughalle Links Akkustand
+sensor.ipad_elw_ersatz_feuerwehr_weingarten_battery_level:
+  friendly_name: iPad Fahrzeughalle Rechts Akkustand
+
+# Temperaturen
+  # EG
+sensor.leitstand_temperatur:
+  friendly_name: not translated
+sensor.fuehrungsraum_temperatur:
+  friendly_name: not translated
+sensor.dusche_herren_temperatur:
+  friendly_name: not translated
+sensor.dusche_damen_temperatur:
+  friendly_name: not translated
+sensor.umkleide_damen_bereich_temperatur:
+  friendly_name: not translated
+sensor.umkleide_herren_bereich_temperatur:
+  friendly_name: not translated
+sensor.schlauchpflege_temp:
+  friendly_name: not translated
+sensor.atemschutz_schwarz_temp:
+  friendly_name: not translated
+sensor.lager_eg:
+  friendly_name: not translated
+sensor.atemschutz_uebergabe:
+  friendly_name: not translated
+sensor.schmutzraum_herren:
+  friendly_name: not translated
+sensor.schmutzraum_damen:
+  friendly_name: not translated
+sensor.umkleide:
+  friendly_name: not translated
+sensor.wc_herren_eg:
+  friendly_name: not translated
+sensor.wc_damen_eg:
+  friendly_name: not translated
+sensor.kleiderkammer_eg:
+  friendly_name: not translated
+sensor.schlauchpflegewerkstatt:
+  friendly_name: not translated
+sensor.geraetewartbuero:
+  friendly_name: not translated
+sensor.atemschutz_schwarz:
+  friendly_name: not translated
+sensor.atemschutz_weiss:
+  friendly_name: not translated
+sensor.atemschutz_auffuellen:
+  friendly_name: not translated
+sensor.atemschutz_ausruesten:
+  friendly_name: not translated
+sensor.atemschutz_lager:
+  friendly_name: not translated
+sensor.foyer_eg:
+  friendly_name: not translated
+sensor.flur_neubau_eg:
+  friendly_name: not translated
+  # OG
+sensor.getraenkelager:
+  friendly_name: not translated
+sensor.foyer_og:
+  friendly_name: not translated
+sensor.teekueche:
+  friendly_name: not translated
+sensor.stuhllager:
+  friendly_name: not translated
+sensor.wc_damen_og:
+  friendly_name: not translated
+sensor.behinderten_wc:
+  friendly_name: not translated
+sensor.wc_herren_og:
+  friendly_name: not translated
+sensor.flur_og:
+  friendly_name: Flur OG
+
+# Bewegungsmelder:
+binary_sensor.atemschutz_ausruesten_eg:
+  friendly_name: Atemschutz Ausrüsten
+binary_sensor.atemschutz_auffuellen_eg:
+  friendly_name: Atemschutz Auffüllen
+binary_sensor.flur_atemschutz_eg:
+  friendly_name: Flur bei Atemschutzwerkstatt
+binary_sensor.atemschutz_lager_eg:
+  friendly_name: Atemschutz Lager
+binary_sensor.atemschutz_schwarz_eg:
+  friendly_name: Atemschutz Schwarz
+binary_sensor.atemschutz_uebergabe_eg:
+  friendly_name: Atemschutz Übergabe
+binary_sensor.atemschutz_weiss_eg:
+  friendly_name: Atemschutz Weiß
+binary_sensor.aufzug_ug:
+  friendly_name: Aufzug
+binary_sensor.damen_dusche_eg:
+  friendly_name: Dusche Damen
+binary_sensor.herren_dusche_eg:
+  friendly_name: Dusche Herren
+binary_sensor.elektro_eg:
+  friendly_name: Elektroraum EG
+binary_sensor.fahrzeughalle_neubau_bewegung:
+  friendly_name: Fahrzeughalle
+binary_sensor.erdgeschoss_flur_bewegung:
+  friendly_name: Erdgeschoss Altbau
+binary_sensor.flur_foyer_nebeneingang_eg:
+  friendly_name: Foyer EG Nebeneingang
+binary_sensor.flur_og:
+  friendly_name: Flur OG
+binary_sensor.foyer_eg:
+  friendly_name: Foyer EG
+binary_sensor.foyer_og:
+  friendly_name: Foyer OG
+binary_sensor.geraetewart_eg:
+  friendly_name: Gerätewart
+binary_sensor.getraenkelager_og:
+  friendly_name: Getränkelager
+binary_sensor.untergeschoss_flur_bewegung:
+  friendly_name: Keller Flur
+binary_sensor.kleiderkammer_eg:
+  friendly_name: Kleiderkammer
+binary_sensor.lager_neubau_eg:
+  friendly_name: Lager EG
+binary_sensor.lehrsaal_feuer_bewegung_leinwand:
+  friendly_name: Lehrsaal Feuer Leinwand
+binary_sensor.lehrsaal_feuer_bewegung_raum_2:
+  friendly_name: Lehrsaal Feuer Raum
+binary_sensor.lehrsaal_flamme_bewegung:
+  friendly_name: Lehrssal Flamme Raum
+binary_sensor.lehrsaal_glut_bewegung_leinwand:
+  friendly_name: Lehrsaal Glut Leinwand
+binary_sensor.lehrsaal_glut_bewegung_raum:
+  friendly_name: Lehrsaal Glut Raum
+binary_sensor.muellraum_eg:
+  friendly_name: Müllraum
+binary_sensor.schlauchpflege_eg:
+  friendly_name: Schlauchpflege
+binary_sensor.damen_schmutzraum_eg:
+  friendly_name: Schmutzraum Damen
+binary_sensor.herren_schmutzraum_eg:
+  friendly_name: Schmutzraum Herren
+binary_sensor.stuhllager_og:
+  friendly_name: Stuhllager
+binary_sensor.technik_eg:
+  friendly_name: Technik EG
+binary_sensor.teekueche_og:
+  friendly_name: Teeküche
+binary_sensor.erdgeschoss_treppenhaus_bewegung:
+  friendly_name: Treppenhaus EG
+binary_sensor.umkleide:
+  friendly_name: Umkleide
+binary_sensor.behinderten_wc_og:
+  friendly_name: WC Behinderte
+binary_sensor.damen_wc_eg:
+  friendly_name: WC Damen EG
+binary_sensor.damen_wc_og:
+  friendly_name: WC Damen OG
+binary_sensor.herren_wc_eg:
+  friendly_name: WC Herren EG
+binary_sensor.herren_wc_og:
+  friendly_name: WC Herren OG
