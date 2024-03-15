@@ -337,6 +337,14 @@ sensor.kleiderkammer_eg_co2:
 senor.atemschutz_schwarz_co2:
   friendly_name: Atemschutz Schwarz
 
+# Helligkeit
+sensor.wetterstation_helligkeit:
+  friendly_name: Wetterstation
+
+# Windstärke
+sensor.wetterstation_windstarke:
+  friendly_name: Wetterstation
+
 
 # Binary Sensor
 binary_sensor.wetterstation_regenalarm:
