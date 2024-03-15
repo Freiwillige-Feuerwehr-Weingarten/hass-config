@@ -180,19 +180,8 @@ light.vordach:
 switch.alarm_ruecksetzen:
   friendly_name: Alarm zurücksetzen
 
-# Binary Sensor
-binary_sensor.wetterstation_regenalarm:
-  friendly_name: Regenalarm
-binary_sensor.wetterstation_dammerung_grenzwert_1:
-  friendly_name: Dämmerung Grenzwert 1
-binary_sensor.wetterstation_dammerung_grenzwert_2:
-  friendly_name: Dämmerung Grenzwert 2
-binary_sensor.wetterstation_windstarke_grenzwert:
-  friendly_name: Windstärke Grenzwert
-binary_sensor.wetterstation_temperatur_grenzwert_1:
-  friendly_name: Frostalarm
-
 # Sensors
+# Batteries
 sensor.apc_leitstand_1_battery_charge:
   friendly_name: Leitstand USV 1
 sensor.apc_leitstand_2_battery_charge:
@@ -303,6 +292,37 @@ sensor.wc_herren_og:
   friendly_name: WC Herren OG
 sensor.flur_og:
   friendly_name: Flur OG
+
+# Feuchtigkeit
+sensor.dusche_herren_feuchtigkeit:
+  friendly_name: Dusche Herren
+sensor.dusche_damen_feuchtigkeit:
+  friendly_name: Dusche Damen
+sonsor.lager_feuchtigkeit:
+  friendly_name: Lager EG
+sensor.umkleide_damen_bereich_humidty:
+  friendly_name: Umkleide Damen
+sensor.umkleide_herren_bereich_humidty:
+  friendly_name: Umkleide Herren
+sensor.schlauchpflege_humidity:
+  friendly_name: Schlauchpflege
+sensor.kleiderkammer_eg_humidity:
+  friendly_name: Kleiderkammer EG
+sensor.atemschutz_schwarz_humidity:
+  friendly_name: Atemschutz Schwarz
+
+
+# Binary Sensor
+binary_sensor.wetterstation_regenalarm:
+  friendly_name: Regenalarm
+binary_sensor.wetterstation_dammerung_grenzwert_1:
+  friendly_name: Dämmerung Grenzwert 1
+binary_sensor.wetterstation_dammerung_grenzwert_2:
+  friendly_name: Dämmerung Grenzwert 2
+binary_sensor.wetterstation_windstarke_grenzwert:
+  friendly_name: Windstärke Grenzwert
+binary_sensor.wetterstation_temperatur_grenzwert_1:
+  friendly_name: Frostalarm
 
 # Bewegungsmelder:
 binary_sensor.atemschutz_ausruesten_eg:
