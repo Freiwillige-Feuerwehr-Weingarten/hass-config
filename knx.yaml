@@ -1033,7 +1033,7 @@ cover:
 climate:
   - name: "Lager"
     temperature_address: "5/1/1"
-    target_temperature_address: "5/1/2"
+    # target_temperature_address: "5/1/2"
     target_temperature_state_address: "5/1/3"
     operation_mode_address: "5/1/4"
     operation_mode_state_address: "5/1/5"
@@ -1041,6 +1041,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/7"
     setpoint_shift_state_address: "5/1/7"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Atemschutz Übergabe"
     temperature_address: "5/1/11"
     target_temperature_address: "5/1/12"
