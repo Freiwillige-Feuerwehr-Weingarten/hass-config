@@ -1050,7 +1050,7 @@ climate:
 
   - name: "Atemschutz Übergabe"
     temperature_address: "5/1/11"
-    target_temperature_address: "5/1/12"
+    # target_temperature_address: "5/1/12"
     target_temperature_state_address: "5/1/13"
     operation_mode_address: "5/1/14"
     operation_mode_state_address: "5/1/15"
@@ -1067,7 +1067,7 @@ climate:
 
   - name: "Schmutzraum Herren"
     temperature_address: "5/1/21"
-    target_temperature_address: "5/1/22"
+    # target_temperature_address: "5/1/22"
     target_temperature_state_address: "5/1/23"
     operation_mode_address: "5/1/24"
     operation_mode_state_address: "5/1/25"
@@ -1084,7 +1084,7 @@ climate:
   
   - name: "Schmutzraum Damen"
     temperature_address: "5/1/31"
-    target_temperature_address: "5/1/32"
+    # target_temperature_address: "5/1/32"
     target_temperature_state_address: "5/1/33"
     operation_mode_address: "5/1/34"
     operation_mode_state_address: "5/1/35"
@@ -1101,7 +1101,7 @@ climate:
 
   - name: "Umkleide"
     temperature_address: "5/1/41"
-    target_temperature_address: "5/1/42"
+    # target_temperature_address: "5/1/42"
     target_temperature_state_address: "5/1/43"
     operation_mode_address: "5/1/44"
     operation_mode_state_address: "5/1/45"
@@ -1118,7 +1118,7 @@ climate:
 
   - name: "WC Herren EG"
     temperature_address: "5/1/51"
-    target_temperature_address: "5/1/52"
+    # target_temperature_address: "5/1/52"
     target_temperature_state_address: "5/1/53"
     operation_mode_address: "5/1/54"
     operation_mode_state_address: "5/1/55"
@@ -1135,7 +1135,7 @@ climate:
 
   - name: "Dusche Herren"
     temperature_address: "5/1/61"
-    target_temperature_address: "5/1/62"
+    # target_temperature_address: "5/1/62"
     target_temperature_state_address: "5/1/63"
     operation_mode_address: "5/1/64"
     operation_mode_state_address: "5/1/65"
@@ -1152,7 +1152,7 @@ climate:
 
   - name: "WC Damen EG"
     temperature_address: "5/1/71"
-    target_temperature_address: "5/1/72"
+    # target_temperature_address: "5/1/72"
     target_temperature_state_address: "5/1/73"
     operation_mode_address: "5/1/74"
     operation_mode_state_address: "5/1/75"
@@ -1169,7 +1169,7 @@ climate:
 
   - name: "Dusche Damen"
     temperature_address: "5/1/81"
-    target_temperature_address: "5/1/82"
+    # target_temperature_address: "5/1/82"
     target_temperature_state_address: "5/1/83"
     operation_mode_address: "5/1/84"
     operation_mode_state_address: "5/1/85"
@@ -1186,7 +1186,7 @@ climate:
 
   - name: "Kleiderkammer EG"
     temperature_address: "5/1/91"
-    target_temperature_address: "5/1/92"
+    # target_temperature_address: "5/1/92"
     target_temperature_state_address: "5/1/93"
     operation_mode_address: "5/1/94"
     operation_mode_state_address: "5/1/95"
@@ -1203,7 +1203,7 @@ climate:
 
   - name: "Schlauchpflegewerkstatt"
     temperature_address: "5/1/101"
-    target_temperature_address: "5/1/102"
+    # target_temperature_address: "5/1/102"
     target_temperature_state_address: "5/1/103"
     operation_mode_address: "5/1/104"
     operation_mode_state_address: "5/1/105"
@@ -1220,7 +1220,7 @@ climate:
 
   - name: "Gerätewartbüro"
     temperature_address: "5/1/111"
-    target_temperature_address: "5/1/112"
+    # target_temperature_address: "5/1/112"
     target_temperature_state_address: "5/1/113"
     operation_mode_address: "5/1/114"
     operation_mode_state_address: "5/1/115"
@@ -1237,7 +1237,7 @@ climate:
 
   - name: "Atemschutz Schwarz"
     temperature_address: "5/1/121"
-    target_temperature_address: "5/1/122"
+    # target_temperature_address: "5/1/122"
     target_temperature_state_address: "5/1/123"
     operation_mode_address: "5/1/124"
     operation_mode_state_address: "5/1/125"
@@ -1254,7 +1254,7 @@ climate:
 
   - name: "Atemschutz Weiß"
     temperature_address: "5/1/131"
-    target_temperature_address: "5/1/132"
+    # target_temperature_address: "5/1/132"
     target_temperature_state_address: "5/1/133"
     operation_mode_address: "5/1/134"
     operation_mode_state_address: "5/1/135"
@@ -1271,7 +1271,7 @@ climate:
 
   - name: "Atemschutz Auffüllen"
     temperature_address: "5/1/141"
-    target_temperature_address: "5/1/142"
+    # target_temperature_address: "5/1/142"
     target_temperature_state_address: "5/1/143"
     operation_mode_address: "5/1/144"
     operation_mode_state_address: "5/1/145"
@@ -1288,7 +1288,7 @@ climate:
 
   - name: "Atemschutz Ausrüsten"
     temperature_address: "5/1/151"
-    target_temperature_address: "5/1/152"
+    # target_temperature_address: "5/1/152"
     target_temperature_state_address: "5/1/153"
     operation_mode_address: "5/1/154"
     operation_mode_state_address: "5/1/155"
@@ -1305,7 +1305,7 @@ climate:
 
   - name: "Atemschutz Lager"
     temperature_address: "5/1/161"
-    target_temperature_address: "5/1/162"
+    # target_temperature_address: "5/1/162"
     target_temperature_state_address: "5/1/163"
     operation_mode_address: "5/1/164"
     operation_mode_state_address: "5/1/165"
@@ -1322,7 +1322,7 @@ climate:
 
   - name: "Foyer EG"
     temperature_address: "5/1/171"
-    target_temperature_address: "5/1/172"
+    # target_temperature_address: "5/1/172"
     target_temperature_state_address: "5/1/173"
     operation_mode_address: "5/1/174"
     operation_mode_state_address: "5/1/175"
@@ -1339,7 +1339,7 @@ climate:
 
   - name: "Flur EG Neubau"
     temperature_address: "5/1/181"
-    target_temperature_address: "5/1/182"
+    # target_temperature_address: "5/1/182"
     target_temperature_state_address: "5/1/183"
     operation_mode_address: "5/1/184"
     operation_mode_state_address: "5/1/185"
@@ -1356,7 +1356,7 @@ climate:
 
   - name: "Foyer OG"
     temperature_address: "5/2/1"
-    target_temperature_address: "5/2/2"
+    # target_temperature_address: "5/2/2"
     target_temperature_state_address: "5/2/3"
     operation_mode_address: "5/2/4"
     operation_mode_state_address: "5/2/5"
@@ -1373,7 +1373,7 @@ climate:
 
   - name: "Feuer"
     temperature_address: "5/2/11"
-    target_temperature_address: "5/2/12"
+    # target_temperature_address: "5/2/12"
     target_temperature_state_address: "5/2/13"
     operation_mode_address: "5/2/14"
     operation_mode_state_address: "5/2/15"
@@ -1390,7 +1390,7 @@ climate:
 
   - name: "Flamme"
     temperature_address: "5/2/21"
-    target_temperature_address: "5/2/22"
+    # target_temperature_address: "5/2/22"
     target_temperature_state_address: "5/2/23"
     operation_mode_address: "5/2/24"
     operation_mode_state_address: "5/2/25"
@@ -1407,7 +1407,7 @@ climate:
 
   - name: "Glut"
     temperature_address: "5/2/31"
-    target_temperature_address: "5/2/32"
+    # target_temperature_address: "5/2/32"
     target_temperature_state_address: "5/2/33"
     operation_mode_address: "5/2/34"
     operation_mode_state_address: "5/2/35"
@@ -1424,7 +1424,7 @@ climate:
 
   - name: "Küche"
     temperature_address: "5/2/41"
-    target_temperature_address: "5/2/42"
+    # target_temperature_address: "5/2/42"
     target_temperature_state_address: "5/2/43"
     operation_mode_address: "5/2/44"
     operation_mode_state_address: "5/2/45"
@@ -1441,7 +1441,7 @@ climate:
 
   - name: "Speisekammer"
     temperature_address: "5/2/51"
-    target_temperature_address: "5/2/52"
+    # target_temperature_address: "5/2/52"
     target_temperature_state_address: "5/2/53"
     operation_mode_address: "5/2/54"
     operation_mode_state_address: "5/2/55"
@@ -1458,7 +1458,7 @@ climate:
 
   - name: "Stuhllager"
     temperature_address: "5/2/61"
-    target_temperature_address: "5/2/62"
+    # target_temperature_address: "5/2/62"
     target_temperature_state_address: "5/2/63"
     operation_mode_address: "5/2/64"
     operation_mode_state_address: "5/2/65"
@@ -1475,7 +1475,7 @@ climate:
 
   - name: "WC Damen OG"
     temperature_address: "5/2/71"
-    target_temperature_address: "5/2/72"
+    # target_temperature_address: "5/2/72"
     target_temperature_state_address: "5/2/73"
     operation_mode_address: "5/2/74"
     operation_mode_state_address: "5/2/75"
@@ -1492,7 +1492,7 @@ climate:
 
   - name: "WC Behinderte"
     temperature_address: "5/2/81"
-    target_temperature_address: "5/2/82"
+    # target_temperature_address: "5/2/82"
     target_temperature_state_address: "5/2/83"
     operation_mode_address: "5/2/84"
     operation_mode_state_address: "5/2/85"
@@ -1509,7 +1509,7 @@ climate:
 
   - name: "WC Herren OG"
     temperature_address: "5/2/91"
-    target_temperature_address: "5/2/92"
+    # target_temperature_address: "5/2/92"
     target_temperature_state_address: "5/2/93"
     operation_mode_address: "5/2/94"
     operation_mode_state_address: "5/2/95"
@@ -1526,7 +1526,7 @@ climate:
 
   - name: "Flur OG"
     temperature_address: "5/2/101"
-    target_temperature_address: "5/2/102"
+    # target_temperature_address: "5/2/102"
     target_temperature_state_address: "5/2/103"
     operation_mode_address: "5/2/104"
     operation_mode_state_address: "5/2/105"
