@@ -1058,6 +1058,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/17"
     setpoint_shift_state_address: "5/1/17"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Schmutzraum Herren"
     temperature_address: "5/1/21"
     target_temperature_address: "5/1/22"
@@ -1068,6 +1075,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/27"
     setpoint_shift_state_address: "5/1/27"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+  
   - name: "Schmutzraum Damen"
     temperature_address: "5/1/31"
     target_temperature_address: "5/1/32"
@@ -1078,6 +1092,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/37"
     setpoint_shift_state_address: "5/1/37"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Umkleide"
     temperature_address: "5/1/41"
     target_temperature_address: "5/1/42"
@@ -1088,6 +1109,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/47"
     setpoint_shift_state_address: "5/1/47"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "WC Herren EG"
     temperature_address: "5/1/51"
     target_temperature_address: "5/1/52"
@@ -1098,6 +1126,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/57"
     setpoint_shift_state_address: "5/1/57"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Dusche Herren"
     temperature_address: "5/1/61"
     target_temperature_address: "5/1/62"
@@ -1108,6 +1143,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/67"
     setpoint_shift_state_address: "5/1/67"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "WC Damen EG"
     temperature_address: "5/1/71"
     target_temperature_address: "5/1/72"
@@ -1118,6 +1160,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/77"
     setpoint_shift_state_address: "5/1/77"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Dusche Damen"
     temperature_address: "5/1/81"
     target_temperature_address: "5/1/82"
@@ -1128,6 +1177,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/87"
     setpoint_shift_state_address: "5/1/87"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Kleiderkammer EG"
     temperature_address: "5/1/91"
     target_temperature_address: "5/1/92"
@@ -1138,6 +1194,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/97"
     setpoint_shift_state_address: "5/1/97"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Schlauchpflegewerkstatt"
     temperature_address: "5/1/101"
     target_temperature_address: "5/1/102"
@@ -1148,6 +1211,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/107"
     setpoint_shift_state_address: "5/1/107"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Gerätewartbüro"
     temperature_address: "5/1/111"
     target_temperature_address: "5/1/112"
@@ -1158,6 +1228,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/117"
     setpoint_shift_state_address: "5/1/117"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Atemschutz Schwarz"
     temperature_address: "5/1/121"
     target_temperature_address: "5/1/122"
@@ -1168,6 +1245,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/127"
     setpoint_shift_state_address: "5/1/127"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Atemschutz Weiß"
     temperature_address: "5/1/131"
     target_temperature_address: "5/1/132"
@@ -1178,6 +1262,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/137"
     setpoint_shift_state_address: "5/1/137"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Atemschutz Auffüllen"
     temperature_address: "5/1/141"
     target_temperature_address: "5/1/142"
@@ -1188,6 +1279,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/147"
     setpoint_shift_state_address: "5/1/147"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Atemschutz Ausrüsten"
     temperature_address: "5/1/151"
     target_temperature_address: "5/1/152"
@@ -1198,6 +1296,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/157"
     setpoint_shift_state_address: "5/1/157"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Atemschutz Lager"
     temperature_address: "5/1/161"
     target_temperature_address: "5/1/162"
@@ -1208,6 +1313,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/167"
     setpoint_shift_state_address: "5/1/167"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Foyer EG"
     temperature_address: "5/1/171"
     target_temperature_address: "5/1/172"
@@ -1218,6 +1330,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/177"
     setpoint_shift_state_address: "5/1/177"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Flur EG Neubau"
     temperature_address: "5/1/181"
     target_temperature_address: "5/1/182"
@@ -1228,6 +1347,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/1/187"
     setpoint_shift_state_address: "5/1/187"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Foyer OG"
     temperature_address: "5/2/1"
     target_temperature_address: "5/2/2"
@@ -1238,6 +1364,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/7"
     setpoint_shift_state_address: "5/2/7"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Feuer"
     temperature_address: "5/2/11"
     target_temperature_address: "5/2/12"
@@ -1248,6 +1381,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/17"
     setpoint_shift_state_address: "5/2/17"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Flamme"
     temperature_address: "5/2/21"
     target_temperature_address: "5/2/22"
@@ -1258,6 +1398,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/27"
     setpoint_shift_state_address: "5/2/27"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Glut"
     temperature_address: "5/2/31"
     target_temperature_address: "5/2/32"
@@ -1268,6 +1415,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/37"
     setpoint_shift_state_address: "5/2/37"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Küche"
     temperature_address: "5/2/41"
     target_temperature_address: "5/2/42"
@@ -1278,6 +1432,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/47"
     setpoint_shift_state_address: "5/2/47"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Speisekammer"
     temperature_address: "5/2/51"
     target_temperature_address: "5/2/52"
@@ -1288,6 +1449,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/57"
     setpoint_shift_state_address: "5/2/57"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Stuhllager"
     temperature_address: "5/2/61"
     target_temperature_address: "5/2/62"
@@ -1298,6 +1466,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/67"
     setpoint_shift_state_address: "5/2/67"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "WC Damen OG"
     temperature_address: "5/2/71"
     target_temperature_address: "5/2/72"
@@ -1308,6 +1483,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/77"
     setpoint_shift_state_address: "5/2/77"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "WC Behinderte"
     temperature_address: "5/2/81"
     target_temperature_address: "5/2/82"
@@ -1318,6 +1500,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/87"
     setpoint_shift_state_address: "5/2/87"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "WC Herren OG"
     temperature_address: "5/2/91"
     target_temperature_address: "5/2/92"
@@ -1328,6 +1517,13 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/97"
     setpoint_shift_state_address: "5/2/97"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
+
   - name: "Flur OG"
     temperature_address: "5/2/101"
     target_temperature_address: "5/2/102"
@@ -1338,6 +1534,12 @@ climate:
     setpoint_shift_mode: "DPT9002"
     setpoint_shift_address: "5/2/107"
     setpoint_shift_state_address: "5/2/107"
+    operation_modes: ["Comfort", "Standby", "Night", "Frost Protection"]
+    setpoint_shift_min: -5
+    setpoint_shift_max: 5
+    min_temp: 10
+    max_temp: 32
+    temperature_step: 0.5
 
 # Wetterstation
 weather:
