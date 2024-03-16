@@ -404,15 +404,15 @@ binary_sensor.kleiderkammer_eg:
 binary_sensor.lager_neubau_eg:
   friendly_name: Lager EG
 binary_sensor.lehrsaal_feuer_bewegung_leinwand:
-  friendly_name: Lehrsaal Feuer Leinwand
+  friendly_name: Lehrsaal Glut Leinwand
 binary_sensor.lehrsaal_feuer_bewegung_raum_2:
-  friendly_name: Lehrsaal Feuer Raum
+  friendly_name: Lehrsaal Glut Raum
 binary_sensor.lehrsaal_flamme_bewegung:
   friendly_name: Lehrssal Flamme Raum
 binary_sensor.lehrsaal_glut_bewegung_leinwand:
-  friendly_name: Lehrsaal Glut Leinwand
+  friendly_name: Lehrsaal Feuer Leinwand
 binary_sensor.lehrsaal_glut_bewegung_raum:
-  friendly_name: Lehrsaal Glut Raum
+  friendly_name: Lehrsaal Feuer Raum
 binary_sensor.muellraum_eg:
   friendly_name: Müllraum
 binary_sensor.schlauchpflege_eg:
