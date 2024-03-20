@@ -167,6 +167,21 @@ switch:
     address: "4/0/10"
     state_address: "4/0/11"
 
+  # Lüftung Lehrsaal "1"
+  - name: lueftung_lehrsaal_1
+    address: "4/0/1"
+    state_address: "4/0/2"
+
+  # Lüftung Lehrsaal "1"
+  - name: lueftung_lehrsaal_2
+    address: "4/0/4"
+    state_address: "4/0/5"
+
+  # Lüftung Lehrsaal "3"
+  - name: lueftung_lehrsaal_3
+    address: "4/0/7"
+    state_address: "4/0/8"
+
 button:
   # Alarmanlage
   - name: bt_telenot_abfrage_zustand
