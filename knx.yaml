@@ -186,6 +186,8 @@ button:
   # Alarmanlage
   - name: bt_telenot_abfrage_zustand
     address: "0/7/0"
+  - name: bt_telenot_neustart
+    address: "0/7/3"
   - name: bt_telenot_scharf_schalten
     address: "0/7/5"
   - name: bt_telenot_unscharf_schalten
