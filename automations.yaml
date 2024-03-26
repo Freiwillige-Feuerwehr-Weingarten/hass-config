@@ -31,6 +31,7 @@
     - POST
     - PUT
     local_only: true
+    enabled: false
   action:
   - service: shell_command.ela_einsatz
     data: {}
@@ -134,6 +135,7 @@
     - POST
     - PUT
     local_only: true
+    enabled: false
   action:
   - service: shell_command.ela_einsatz
     data: {}
@@ -3041,7 +3043,12 @@
   alias: voralarm
   description: ''
   trigger: []
-  condition: []
+  condition:
+  - condition: time
+    weekday:
+    - thu
+    before: '18:55:00'
+    after: '19:05:00'
   action:
   - service: cover.open_cover
     target:
