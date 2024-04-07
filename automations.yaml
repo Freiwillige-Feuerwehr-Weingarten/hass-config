@@ -3065,6 +3065,11 @@
       - cover.door_umkleide_herren
       - cover.door_umkleide_mitte
     data: {}
+  - service: timer.start
+    metadata: {}
+    data: {}
+    target:
+      entity_id: timer.alarm_reset_timer
   mode: single
 - id: '1704376263968'
   alias: kurzzeit_schranke_lkw
