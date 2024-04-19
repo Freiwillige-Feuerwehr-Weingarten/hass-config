@@ -2847,6 +2847,7 @@
       entity_id:
       - cover.cover_schranke_lkw
       - cover.cover_schranke_pkw
+    enabled: false
   - service: cover.close_cover
     data: {}
     target:
@@ -4805,4 +4806,69 @@
   trigger: []
   condition: []
   action: []
+  mode: single
+- id: '1712560806117'
+  alias: ELA schalten auf Arbeitsszene
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: shell_command.ela_arbeit
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1712561033492'
+  alias: ELA schalten auf Führungsgruppenszene
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: shell_command.ela_fuehrungsgruppe
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1712561094468'
+  alias: ELA schalten auf aus
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: shell_command.ela_aus
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1712562957210'
+  alias: ELA schalten auf Lehrsaal
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: shell_command.ela_lehrsaal
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1712563182443'
+  alias: ELA schalten auf Saugstelle
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: shell_command.ela_saugstelle
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1713522850069'
+  alias: Letzte_Runde
+  description: ''
+  trigger: []
+  condition:
+  - condition: state
+    entity_id: timer.alarm_reset_timer
+    state: idle
+  action:
+  - service: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.aussenturen
   mode: single
