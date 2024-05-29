@@ -883,3 +883,39 @@
         - service: switch.turn_off
           target:
             entity_id: switch.t_treppenhaus
+
+    garage_aussen_links:
+      device_class: garage
+      friendly_name: "Garage Außen Links"
+      unique_id: "garage_outside_left_"
+      value_template: unknown
+      open_cover:
+        - service: automation.trigger
+          target:
+            entity_id: automation.garage_aussen_links_auf
+      close_cover:
+        - service: automation.trigger
+          target:
+            entity_id: automation.garage_aussen_links_zu
+      stop_cover:
+        - service: automation.trigger
+          target:
+            entity_id: automation.garage_aussen_links_stop
+
+    garage_aussen_rechts:
+      device_class: garage
+      friendly_name: "Garage Außen Rechts"
+      unique_id: "garage_outside_right_"
+      value_template: unknown
+      open_cover:
+        - service: automation.trigger
+          target:
+            entity_id: automation.garage_aussen_rechts_auf
+      close_cover:
+        - service: automation.trigger
+          target:
+            entity_id: automation.garage_aussen_rechts_zu
+      stop_cover:
+        - service: automation.trigger
+          target:
+            entity_id: automation.garage_aussen_rechts_stop
