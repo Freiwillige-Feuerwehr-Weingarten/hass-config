@@ -1,0 +1,16 @@
+#!/usr/bin/expect -f
+set timeout 2
+set dir [lindex $argv 0];
+set file [lindex $argv 1];
+spawn telnet 192.168.8.6 49280
+send "devstatus runmode\r"
+expect "*?devstatus*?"
+send "event MTX:AudioPlayerSetPlayMode \"playmode=one\"\r"
+expect "OK event MTX:AudioPlayerSetPlayMode \"playmode=one\""
+
+send "event MTX:AudioPlayerSetCurrentSong \"dirpath=$dir|fileindex=$file\"\r"
+expect "OK event MTX:AudioPlayerSetCurrentSong \"dirpath=$dir|dirname=*?"
+
+send "event MTX:AudioPlayerTransport \"operation=play\"\r"
+expect "ok event MTX:AudioPlayerTransport\"operation=play\""
+#expect "ok event MTX:AudioPlayerTransport\"operation=stop\""
