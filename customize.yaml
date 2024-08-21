@@ -441,3 +441,15 @@ binary_sensor.herren_wc_eg:
   friendly_name: WC Herren EG
 binary_sensor.herren_wc_og:
   friendly_name: WC Herren OG
+
+input_number.hlf_entfernung:
+  time_from: ""
+  time_to: ""
+
+input_select.vrw_status:
+  templates:
+    icon_color: >
+      if (state == '2') return 'green';
+      if (state == '3') return 'orange';
+      if (state == '4') return 'red';
+      return 'gray';
