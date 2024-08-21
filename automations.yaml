@@ -1,27 +1,3 @@
-- id: 67d1cc086b9245a4955c2e50416469f4
-  alias: Alarmtrigger
-  trigger:
-  - platform: webhook
-    webhook_id: Alarmtrigger
-    allowed_methods:
-    - POST
-    - PUT
-    local_only: true
-  action:
-  - service: switch.turn_on
-    entity_id: switch.gong_bagatelle
-- id: 93219844c0b84df5a2bc071726ccbf0a
-  alias: Türöffner
-  trigger:
-  - platform: webhook
-    webhook_id: Tuerbuzzer
-    allowed_methods:
-    - PUT
-    - POST
-    local_only: true
-  action:
-  - service: switch.turn_on
-    entity_id: switch.halle1_tur_buzzer
 - id: 36757553cf904719a271570f6177c99a
   alias: Dringender Alarm
   trigger:
@@ -35,9 +11,16 @@
   action:
   - service: shell_command.ela_einsatz
     data: {}
-  - service: shell_command.gong_dringend
-    data: {}
-    enabled: false
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 500
+  - service: shell_command.ela_song_playback_script
+    metadata: {}
+    data_template:
+      directory: 0/4
+      file: '4'
   - service: cover.open_cover
     data: {}
     target:
@@ -62,43 +45,13 @@
   - service: button.press
     data: {}
     target:
-      entity_id: button.knx_alarm_dringend
-    enabled: false
-  - service: button.press
-    data: {}
-    target:
       entity_id: button.bumper_free_2
-  - service: automation.trigger
-    data:
-      skip_condition: true
-    target:
-      entity_id: automation.alarm_zuruecksetzen
-    enabled: false
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id:
-      - media_player.vlc_telnet_2
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://media_source/local/Alarmgong_Bochum.mp3
-      media_content_type: audio/mpeg
-    metadata:
-      title: Alarmgong_Bochum.mp3
-      thumbnail:
-      media_class: music
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://media_source
   - service: timer.start
     data: {}
     target:
-      entity_id: timer.alarm_reset_timer
+      entity_id:
+      - timer.alarm_reset_timer
+      - timer.aao_reset_timer
   - service: notify.mobile_app_pixel_7
     data:
       title: Einsatz
@@ -139,30 +92,16 @@
   action:
   - service: shell_command.ela_einsatz
     data: {}
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id:
-      - media_player.vlc_telnet_2
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://media_source/local/Alarmgong_Gelsenkirchen.mp3
-      media_content_type: audio/mpeg
-    metadata:
-      title: Alarmgong_Gelsenkirchen.mp3
-      thumbnail:
-      media_class: music
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://media_source
-  - service: shell_command.gong_bagatel
-    data: {}
-    enabled: false
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 500
+  - service: shell_command.ela_song_playback_script
+    metadata: {}
+    data_template:
+      directory: 0/4
+      file: '5'
   - service: cover.open_cover
     data: {}
     target:
@@ -183,16 +122,12 @@
     target:
       entity_id: light.halle_durchgang
       area_id: leitstand
-  - service: automation.trigger
-    data:
-      skip_condition: true
-    target:
-      entity_id: automation.alarm_zuruecksetzen
-    enabled: false
   - service: timer.start
     data: {}
     target:
-      entity_id: timer.alarm_reset_timer
+      entity_id:
+      - timer.alarm_reset_timer
+      - timer.aao_reset_timer
   - service: notify.mobile_app_pixel_7
     data:
       message: Einsatz
@@ -220,116 +155,6 @@
       brightness: 255
     target:
       entity_id: light.turm_test_gnarf
-- id: 3bcc9ec3a5e8454cbd1b8f30aeff1bcc
-  alias: Telefon akustisches Signal
-  trigger:
-  - platform: webhook
-    webhook_id: telefonakustik
-    allowed_methods:
-    - POST
-    - PUT
-    local_only: true
-  action:
-  - service: shell_command.telefon_akustik
-    data: {}
-    enabled: false
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet_2
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://media_source/local/DB_Gong.mp3
-      media_content_type: audio/mpeg
-    metadata:
-      title: DB_Gong.mp3
-      thumbnail:
-      media_class: music
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://media_source
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Das+Telefon+klingelt.&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: Das Telefon klingelt.
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Das+Telefon+klingelt.&language=de_DE&voice=de_DE-thorsten-high
-- id: b1bb46e3d6754f2792fc647f187e15c5
-  alias: Türklingel akustisches Signal
-  trigger:
-  - platform: webhook
-    webhook_id: tuerakustik
-    allowed_methods:
-    - POST
-    - PUT
-    local_only: true
-  action:
-  - service: shell_command.tuer_akustik
-    data: {}
-    enabled: false
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet_2
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://media_source/local/DB_Gong.mp3
-      media_content_type: audio/mpeg
-    metadata:
-      title: DB_Gong.mp3
-      thumbnail:
-      media_class: music
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://media_source
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Es+ist+jemand+an+der+T%C3%BCre.&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: Es ist jemand an der Türe.
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Es+ist+jemand+an+der+T%C3%BCre.&language=de_DE&voice=de_DE-thorsten-high
 - id: 585142117507474aa7a2e93e34912b6c
   alias: ELA schalten auf Einsatzszene
   trigger:
@@ -355,2421 +180,16 @@
     data: {}
     response_variable: akku_stoerung_rm
   mode: single
-- id: '1688650679203'
-  alias: alarmszene_b1
-  description: Szene Alarmierung für B1
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: LF1
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+1%3B+Es+r%C3%BCckt+aus%3A+LF1%3B+&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 1; Es rückt aus: LF1; '
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+1%3B+Es+r%C3%BCckt+aus%3A+LF1%3B+&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688650741772'
-  alias: alarmszene_b2_brand_klein
-  description: Szene B2 Brand Klein
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: LF1
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+2+-+Brand+klein%3B+Es+r%C3%BCckt+aus%3A+LF1%3B+&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 2 - Brand klein; Es rückt aus: LF1; '
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+2+-+Brand+klein%3B+Es+r%C3%BCckt+aus%3A+LF1%3B+&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688650827149'
-  alias: alarmszene_b2_pkw
-  description: Szene B2 PKW
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: TLF, RW2, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+2+-+PKW%3B+Es+r%C3%BCckt+aus%3A+TLF%3B+RW2%3B+E+L+W+mit+Zugf%C3%BChrern%3B&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 2 - PKW; Es rückt aus: TLF; RW2; E L W mit Zugführern;'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+2+-+PKW%3B+Es+r%C3%BCckt+aus%3A+TLF%3B+RW2%3B+E+L+W+mit+Zugf%C3%BChrern%3B&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688651052420'
-  alias: alarmszene_b2_pkw_person_eingeschlossen
-  description: Szene B2 PKW Person eingeschloßen
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, TLF, RW2, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+2+-+PKW+Person+eingeschlossen%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+TLF%2C+RW2%2C+E+L+W+mit+Zugf%C3%BChrern%3B&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 2 - PKW Person eingeschlossen; Es rückt aus: VRW, TLF, RW2, E
-        L W mit Zugführern;'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+2+-+PKW+Person+eingeschlossen%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+TLF%2C+RW2%2C+E+L+W+mit+Zugf%C3%BChrern%3B&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688651158922'
-  alias: alarmszene_b2_pkw_b30neu
-  description: Szene B2 PKW B30 neu
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_6_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: TLF, RW2, GWT, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+2+-+PKW+B30+Neu%3B+Es+r%C3%BCckt+aus%3A+TLF%2C+RW2%2C+GWT%2C+E+L+W+mit+Zugf%C3%BChrern%3B&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 2 - PKW B30 Neu; Es rückt aus: TLF, RW2, GWT, E L W mit Zugführern;'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+2+-+PKW+B30+Neu%3B+Es+r%C3%BCckt+aus%3A+TLF%2C+RW2%2C+GWT%2C+E+L+W+mit+Zugf%C3%BChrern%3B&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688651321631'
-  alias: alarmszene_ruestzug
-  description: Szene Rüstzug
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_13_einsatz
-    metadata: {}
-  mode: single
-- id: '1688651398091'
-  alias: alarmszene_b2_fahrzeug_alternative_antriebe
-  description: Szene B2 Fahrzeug Alternative Antriebe
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, TLF, RW2, LF1, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+2+-+Fahrzeug+alternativer+Antrieb%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+TLF%2C+RW2%2C+LF1%2C+E+L+W+mit+Zugf%C3%BChrern%3B&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 2 - Fahrzeug alternativer Antrieb; Es rückt aus: VRW, TLF, RW2,
-        LF1, E L W mit Zugführern;'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+2+-+Fahrzeug+alternativer+Antrieb%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+TLF%2C+RW2%2C+LF1%2C+E+L+W+mit+Zugf%C3%BChrern%3B&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688651476151'
-  alias: alarmszene_b2_wald_flaeche
-  description: Szene B2 Wald Fläche
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_13_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: LF1, TLF
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+2+-+Wald+%2F+Fl%C3%A4che%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+TLF%3B&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 2 - Wald / Fläche; Es rückt aus: LF1, TLF;'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+2+-+Wald+%2F+Fl%C3%A4che%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+TLF%3B&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688651539200'
-  alias: alarmszene_b2y_person
-  description: Szene B2Y Person
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: LF1
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+2+Menschen+in+Gefahr+-+Person%3B+Es+r%C3%BCckt+aus%3A+LF1&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 2 Menschen in Gefahr - Person; Es rückt aus: LF1'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+2+Menschen+in+Gefahr+-+Person%3B+Es+r%C3%BCckt+aus%3A+LF1&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688651859022'
-  alias: alarmszene_loeschzug
-  description: Szene Löschzug
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_14_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_16_einsatz
-    metadata: {}
-  mode: single
-- id: '1688651903266'
-  alias: alarmszene_b3_brand
-  description: Szene B3 Brand
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.loschzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_4_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: LF1, DLK, LF2, RW2, GW-Hy, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+3%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+DLK%2C+LF2%2C+RW2%2C+GW-Hygiene%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 3; Es rückt aus: LF1, DLK, LF2, RW2, GW-Hygiene, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+3%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+DLK%2C+LF2%2C+RW2%2C+GW-Hygiene%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688651966524'
-  alias: alarmszene_b3_brand_mit_rettung
-  description: Szene B3 Brand mit Rettung
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.loschzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_17_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_4_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: ELW (FüGr), LF1, DLK, LF2, GW-A, RW2, GW-Hy
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+3+Personen+in+Gefahr+-+Brand+mit+Rettung%3B+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+DLK%2C+LF2%2C+GW-Atemschutz%2C+RW2%2C+GW-Hygiene&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 3 Personen in Gefahr - Brand mit Rettung; Es rückt aus: Führungsgruppe,
-        LF1, DLK, LF2, GW-Atemschutz, RW2, GW-Hygiene'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+3+Personen+in+Gefahr+-+Brand+mit+Rettung%3B+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+DLK%2C+LF2%2C+GW-Atemschutz%2C+RW2%2C+GW-Hygiene&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688652020251'
-  alias: alarmszene_b3_rauchmelder_bma_gas_co
-  description: Szene B3 Rauchmelder BMA GAS CO
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.loschzug
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: LF1, DLK, LF2, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+3+Rauchmelder+%2F+B+M+A+%2F+Gas+%2F+CO%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+DLK%2C+LF2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 3 Rauchmelder / B M A / Gas / CO; Es rückt aus: LF1, DLK, LF2,
-        E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+3+Rauchmelder+%2F+B+M+A+%2F+Gas+%2F+CO%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+DLK%2C+LF2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688652084239'
-  alias: alarmszene_b3_schornstein
-  description: Szene B3 Schornstein
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.loschzug
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: LF1, DLK, LF2, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+3+Schornstein%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+DLK%2C+LF2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 3 Schornstein; Es rückt aus: LF1, DLK, LF2, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+3+Schornstein%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+DLK%2C+LF2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688652154611'
-  alias: alarmszene_b3_wald_flaeche
-  description: Szene B3 Wald Fläche
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_13_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_16_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: LF1, LF2, TLF, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+3+Wald+%2F+Fl%C3%A4che%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+LF2%2C+TLF%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 3 Wald / Fläche; Es rückt aus: LF1, LF2, TLF, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+3+Wald+%2F+Fl%C3%A4che%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+LF2%2C+TLF%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688652269115'
-  alias: alarmszene_b4y_brand_gross
-  description: Szene B4(Y) Brand groß
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.loschzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_13_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_4_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_17_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: ELW (FüGr), LF1, DLK, LF2, TLF, GW-A, RW2, GW-Hy
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Brand+4+Personen+in+Gefahr+-+Brand+gro%C3%9F%3B+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+DLK%2C+LF2%2C+TLF%2C+Ger%C3%A4tewagen+Atemschutz%2C++RW2%2C+Ger%C3%A4tewagen+Hygiene&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Brand 4 Personen in Gefahr - Brand groß; Es rückt aus: Führungsgruppe,
-        LF1, DLK, LF2, TLF, Gerätewagen Atemschutz,  RW2, Gerätewagen Hygiene'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Brand+4+Personen+in+Gefahr+-+Brand+gro%C3%9F%3B+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+DLK%2C+LF2%2C+TLF%2C+Ger%C3%A4tewagen+Atemschutz%2C++RW2%2C+Ger%C3%A4tewagen+Hygiene&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688653508950'
-  alias: alarmszene_u2_oel_gewasser
-  description: Szene U2 Öl Gewässer
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_6_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: RW2, GW-T, LF1
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Umwelt+2+-+%C3%96l+auf+Gew%C3%A4sser.+Es+r%C3%BCckt+aus%3A+RW2%2C+Ger%C3%A4tewagen+Transport%2C+LF1&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Umwelt 2 - Öl auf Gewässer. Es rückt aus: RW2, Gerätewagen Transport,
-        LF1'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Umwelt+2+-+%C3%96l+auf+Gew%C3%A4sser.+Es+r%C3%BCckt+aus%3A+RW2%2C+Ger%C3%A4tewagen+Transport%2C+LF1&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688653586143'
-  alias: alarmszene_u2_gas_geruch
-  description: Szene U2 Gas Geruch
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, LF1
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Umwelt+2+-+Gas+oder+Geruch.+Es+r%C3%BCckt+aus%3A+VRW%2C+LF1&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Umwelt 2 - Gas oder Geruch. Es rückt aus: VRW, LF1'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Umwelt+2+-+Gas+oder+Geruch.+Es+r%C3%BCckt+aus%3A+VRW%2C+LF1&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688653660031'
-  alias: alarmszene_u3
-  description: Szene U3
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_16_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_17_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_4_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: LF1, RW2, LF2, GW-A, GW-Hy, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Umwelt+3.+Es+r%C3%BCckt+aus%3A+LF1%2C+RW2%2C+LF2%2C+Ger%C3%A4tewagen+Atemschutz%2C+Ger%C3%A4tewagen+Hygiene%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Umwelt 3. Es rückt aus: LF1, RW2, LF2, Gerätewagen Atemschutz, Gerätewagen
-        Hygiene, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Umwelt+3.+Es+r%C3%BCckt+aus%3A+LF1%2C+RW2%2C+LF2%2C+Ger%C3%A4tewagen+Atemschutz%2C+Ger%C3%A4tewagen+Hygiene%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688653765231'
-  alias: alarmszene_s1
-  description: Szene S1(Y)
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Sonstiges+1+-+Personen+in+Gefahr.+Es+r%C3%BCckt+aus%3A+VRW&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Sonstiges 1 - Personen in Gefahr. Es rückt aus: VRW'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Sonstiges+1+-+Personen+in+Gefahr.+Es+r%C3%BCckt+aus%3A+VRW&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688653819817'
-  alias: alarmszene_s1_gas
-  description: Szene S1 Gas
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, LF1
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Sonstiges+1+-+Gas.+Es+r%C3%BCckt+aus%3A+VRW%2C+LF1&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Sonstiges 1 - Gas. Es rückt aus: VRW, LF1'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Sonstiges+1+-+Gas.+Es+r%C3%BCckt+aus%3A+VRW%2C+LF1&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688653852093'
-  alias: alarmszene_s2_gas
-  description: Szene S2 Gas
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, LF1
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Sonstiges+2+-+Gas.+Es+r%C3%BCckt+aus%3A+VRW%2C+LF1&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Sonstiges 2 - Gas. Es rückt aus: VRW, LF1'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Sonstiges+2+-+Gas.+Es+r%C3%BCckt+aus%3A+VRW%2C+LF1&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688653895911'
-  alias: alarmszene_s3_gas
-  description: Szene S3 Gas
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.loschzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, LF1, DLK, LF2, RW2, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Sonstiges+3+-+Gas.+Es+r%C3%BCckt+aus%3A+VRW%2C+LF1%2C+DLK%2C+LF2%2C+RW2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Sonstiges 3 - Gas. Es rückt aus: VRW, LF1, DLK, LF2, RW2, E L W mit
-        Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Sonstiges+3+-+Gas.+Es+r%C3%BCckt+aus%3A+VRW%2C+LF1%2C+DLK%2C+LF2%2C+RW2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688653958649'
-  alias: alarmszene_s3_wasserrettung
-  description: Szene S3(Y) Wasserrettung
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_14_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_5_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_6_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: RW2, DLK, LF1, GW-T, LiMa, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Sonstiges+3+Personen+in+Gefahr+-+Wasserrettung.+Es+r%C3%BCckt+aus%3A+RW2%2C+DLK%2C+LF1%2C+Ger%C3%A4tewagen+Transport%2C+Lichtmast+Anh%C3%A4nger%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Sonstiges 3 Personen in Gefahr - Wasserrettung. Es rückt aus: RW2, DLK,
-        LF1, Gerätewagen Transport, Lichtmast Anhänger, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Sonstiges+3+Personen+in+Gefahr+-+Wasserrettung.+Es+r%C3%BCckt+aus%3A+RW2%2C+DLK%2C+LF1%2C+Ger%C3%A4tewagen+Transport%2C+Lichtmast+Anh%C3%A4nger%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688654018461'
-  alias: alarmszene_s3_springer
-  description: Szene S3 Springer
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_14_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_3_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: DLK, LF1, RW2, MTW-2, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Sonstiges+3+Personen+in+Gefahr+-+Springer.+Es+r%C3%BCckt+aus%3A+DLK%2C+LF1%2C+RW2%2C+H%C3%B6henrettung+mit+MTW-2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Sonstiges 3 Personen in Gefahr - Springer. Es rückt aus: DLK, LF1, RW2,
-        Höhenrettung mit MTW-2, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Sonstiges+3+Personen+in+Gefahr+-+Springer.+Es+r%C3%BCckt+aus%3A+DLK%2C+LF1%2C+RW2%2C+H%C3%B6henrettung+mit+MTW-2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688654085024'
-  alias: alarmszene_s3_heoehe_tiefe
-  description: Szene S3 Höhe Tiefe
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_14_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_3_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: DLK, LF1, RW2, MTW-2, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Sonstiges+3+Personen+in+Gefahr+-+Rettung+aus+H%C3%B6hen+und+Tiefen.+Es+r%C3%BCckt+aus%3A+DLK%2C+LF1%2C+RW2%2C+H%C3%B6henrettung+mit+MTW-2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Sonstiges 3 Personen in Gefahr - Rettung aus Höhen und Tiefen. Es rückt
-        aus: DLK, LF1, RW2, Höhenrettung mit MTW-2, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Sonstiges+3+Personen+in+Gefahr+-+Rettung+aus+H%C3%B6hen+und+Tiefen.+Es+r%C3%BCckt+aus%3A+DLK%2C+LF1%2C+RW2%2C+H%C3%B6henrettung+mit+MTW-2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688655903407'
-  alias: alarmszene_t1_oel_strasse
-  description: Szene T1 Öl Straße
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_13_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_6_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: RW2, TLF, GW-T
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+1+-+%C3%96l+auf+Stra%C3%9Fe%3B+Es+r%C3%BCckt+aus%3A+RW2%2C+TLF%2C+GW-T&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 1 - Öl auf Straße; Es rückt aus: RW2, TLF,
-        GW-T'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+1+-+%C3%96l+auf+Stra%C3%9Fe%3B+Es+r%C3%BCckt+aus%3A+RW2%2C+TLF%2C+GW-T&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688655943308'
-  alias: alarmszene_t1_vu_klein
-  description: Szene T1 VU Klein
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, RW2, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+1+-+Verkehrsunfall+klein%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 1 - Verkehrsunfall klein; Es rückt aus: VRW,
-        RW2, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+1+-+Verkehrsunfall+klein%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688655990701'
-  alias: alarmszene_t2_aufzug_einfacher_einklemmung
-  description: Szene T2 Aufzug einfache Einklemmung
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, RW2
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Aufzug+oder+einfache+Einklemmung%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 2 - Aufzug oder einfache Einklemmung; Es rückt
-        aus: VRW, RW2'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Aufzug+oder+einfache+Einklemmung%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656056247'
-  alias: alarmszene_t2_bahn
-  description: Szene T2 Bahn
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: LF1, RW2, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Bahnunfall%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+RW2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 2 - Bahnunfall; Es rückt aus: LF1, RW2, E L
-        W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Bahnunfall%3B+Es+r%C3%BCckt+aus%3A+LF1%2C+RW2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656093382'
-  alias: alarmszene_t2_dlk_rettung
-  description: Szene T2 DLK Rettung
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_14_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: DLK, RW2
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Drehleiterrettung%3B+Es+r%C3%BCckt+aus%3A+DLK%2C+RW2&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 2 - Drehleiterrettung; Es rückt aus: DLK, RW2'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Drehleiterrettung%3B+Es+r%C3%BCckt+aus%3A+DLK%2C+RW2&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656125538'
-  alias: alarmszene_t2_sturm
-  description: Szene T2 Sturm
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: RW2
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Sturm%3B+Es+r%C3%BCckt+aus%3A+RW2&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 2 - Sturm; Es rückt aus: RW2'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Sturm%3B+Es+r%C3%BCckt+aus%3A+RW2&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656153558'
-  alias: alarmszene_t2_hochwasser
-  description: Szene T2 Hochwasser
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_13_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: TLF
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Hochwasser%3B+Es+r%C3%BCckt+aus%3A+TLF&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 2 - Hochwasser; Es rückt aus: TLF'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Hochwasser%3B+Es+r%C3%BCckt+aus%3A+TLF&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656188332'
-  alias: alarmszene_t2_vu_klein
-  description: Szene T2 VU Klein
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, RW2, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Verkehrsunfall+klein%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 2 - Verkehrsunfall klein; Es rückt aus: VRW,
-        RW2, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+-+Verkehrsunfall+klein%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656222633'
-  alias: alarmszene_t2_stromunfall
-  description: Szene T2 Stromunfall
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, RW2, TLF
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+Personen+in+Gefahr+-+Stromunfall%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+TLF&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 2 Personen in Gefahr - Stromunfall; Es rückt
-        aus: VRW, RW2, TLF'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+2+Personen+in+Gefahr+-+Stromunfall%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+TLF&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656281548'
-  alias: alarmszene_t3_vu_einklemmung
-  description: Szene T3 VU Einklemmung
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, RW2, TLF, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+3+Personen+in+Gefahr+-+Verkehrsunfall+mit+Einklemmung%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+TLF%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 3 Personen in Gefahr - Verkehrsunfall mit Einklemmung;
-        Es rückt aus: VRW, RW2, TLF, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+3+Personen+in+Gefahr+-+Verkehrsunfall+mit+Einklemmung%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+TLF%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656328013'
-  alias: alarmszene_t3_vu_fahrzeug_alternativer_antrieb
-  description: Szene T3 VU Fahrzeug alternativ angetrieben
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, RW2, TLF, LF1, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+3+Personen+in+Gefahr+-+Verkehrsunfall+mit+alternativ+angetriebenem+Fahrzeug%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+TLF%2C+RW2%2C+LF1%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 3 Personen in Gefahr - Verkehrsunfall mit alternativ
-        angetriebenem Fahrzeug; Es rückt aus: VRW, TLF, RW2, LF1, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+3+Personen+in+Gefahr+-+Verkehrsunfall+mit+alternativ+angetriebenem+Fahrzeug%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+TLF%2C+RW2%2C+LF1%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656400281'
-  alias: alarmszene_t3_vu_b30n
-  description: Szene T3 VU B30neu
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_6_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, RW2, TLF, GW-T, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+3+Personen+in+Gefahr+-+Verkehrsunfall+auf+Bundesstra%C3%9Fe+30+neu%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+TLF%2C+Ger%C3%A4tewagen+Transport%2C++E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 3 Personen in Gefahr - Verkehrsunfall auf Bundesstraße
-        30 neu; Es rückt aus: VRW, RW2, TLF, Gerätewagen Transport,  E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+3+Personen+in+Gefahr+-+Verkehrsunfall+auf+Bundesstra%C3%9Fe+30+neu%3B+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+TLF%2C+Ger%C3%A4tewagen+Transport%2C++E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656464368'
-  alias: alarmszene_t3_wasser_eisrettung
-  description: Szene T3 Wasser Eisrettung
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_14_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_5_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_6_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: RW2, DLK, LF1, GW-T, LiMa
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+3+Personen+in+Gefahr+-+Wasser+oder+Eisrettung%3B+Es+r%C3%BCckt+aus%3A+RW2%2C+DLK%2C+LF1%2C+Ger%C3%A4tewagen+Transport%2C+Lichtmast+Anh%C3%A4nger&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 3 Personen in Gefahr - Wasser oder Eisrettung;
-        Es rückt aus: RW2, DLK, LF1, Gerätewagen Transport, Lichtmast Anhänger'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+3+Personen+in+Gefahr+-+Wasser+oder+Eisrettung%3B+Es+r%C3%BCckt+aus%3A+RW2%2C+DLK%2C+LF1%2C+Ger%C3%A4tewagen+Transport%2C+Lichtmast+Anh%C3%A4nger&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656516769'
-  alias: alarmszene_t3_einsturz_verschuettet
-  description: Szene T3 Einsturz / Verschüttet
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_14_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, RW2, TLF, DLK, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+3+Personen+in+Gefahr+-+Einsturz+oder+Versch%C3%BCttung.+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+TLF%2C+DLK%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 3 Personen in Gefahr - Einsturz oder Verschüttung.
-        Es rückt aus: VRW, RW2, TLF, DLK, E L W mit Zugführern'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+3+Personen+in+Gefahr+-+Einsturz+oder+Versch%C3%BCttung.+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+TLF%2C+DLK%2C+E+L+W+mit+Zugf%C3%BChrern&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656583585'
-  alias: alarmszene_t4_vu_gross_zug_flugzeug
-  description: Szene T3(Y) VU groß / Zug / Flugzeug
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_6_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: ELW (FüGr), VRW, RW2, TLF, LF1, GW-T
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+4+Personen+in+Gefahr+-+Verkehrsunfall+gro%C3%9F+%2F+Bahn+%2F+Flugzeug+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+VRW%2C+RW2%2C+TLF%2C+LF1%2C+Ger%C3%A4tewagen+Transport&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 4 Personen in Gefahr - Verkehrsunfall groß
-        / Bahn / Flugzeug Es rückt aus: Führungsgruppe, VRW, RW2, TLF, LF1, Gerätewagen
-        Transport'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+4+Personen+in+Gefahr+-+Verkehrsunfall+gro%C3%9F+%2F+Bahn+%2F+Flugzeug+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+VRW%2C+RW2%2C+TLF%2C+LF1%2C+Ger%C3%A4tewagen+Transport&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688656687813'
-  alias: alarmszene_t4_einsturz_verschuettet
-  description: Szene T4 Einsturz / Verschüttet
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_6_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: ELW (FüGr), VRW, RW2, TLF, LF1, GW-T
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+4+Personen+in+Gefahr+-+Einsturz+oder+Versch%C3%BCttung.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+VRW%2C+RW2%2C+TLF%2C+LF1%2C+Ger%C3%A4tewagen+Transport&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Technische Hilfeleistung 4 Personen in Gefahr - Einsturz oder Verschüttung.
-        Es rückt aus: Führungsgruppe, VRW, RW2, TLF, LF1, Gerätewagen Transport'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Technische+Hilfeleistung+4+Personen+in+Gefahr+-+Einsturz+oder+Versch%C3%BCttung.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+VRW%2C+RW2%2C+TLF%2C+LF1%2C+Ger%C3%A4tewagen+Transport&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657238105'
-  alias: alarmszene_z_dlk_solo
-  description: Szene Z DLK Solo
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_14_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: DLK
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+-+DLK+Solo.+Es+r%C3%BCckt+aus%3A+DLK&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz - DLK Solo. Es rückt aus: DLK'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+-+DLK+Solo.+Es+r%C3%BCckt+aus%3A+DLK&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657276200'
-  alias: alarmszene_z_gwa_solo
-  description: Szene Z GW-A Solo
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_17_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: GW-A
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+-+Ger%C3%A4tewagen+Atemschutz+Solo.+Es+r%C3%BCckt+aus%3A+Ger%C3%A4tewagen+Atemschutz&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz - Gerätewagen Atemschutz Solo. Es rückt aus: Gerätewagen Atemschutz'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+-+Ger%C3%A4tewagen+Atemschutz+Solo.+Es+r%C3%BCckt+aus%3A+Ger%C3%A4tewagen+Atemschutz&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657312265'
-  alias: alarmszene_z_dlk_rettung
-  description: Szene Z DLK Rettung
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_14_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: DLK, RW2
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+-+Drehleiter+Rettung.+Es+r%C3%BCckt+aus%3A+DLK%2C+RW2&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz - Drehleiter Rettung. Es rückt aus: DLK, RW2'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+-+Drehleiter+Rettung.+Es+r%C3%BCckt+aus%3A+DLK%2C+RW2&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657353367'
-  alias: alarmszene_z_dlk_lf
-  description: SZene Z DLK und LF
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_14_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: DLK, LF1
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+-+Drehleiter+und+LF1.+Es+r%C3%BCckt+aus%3A+DLK%2C+LF1&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz - Drehleiter und LF1. Es rückt aus: DLK, LF1'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+-+Drehleiter+und+LF1.+Es+r%C3%BCckt+aus%3A+DLK%2C+LF1&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657386083'
-  alias: alarmszene_z_vrw_rw2
-  description: Szene Z VRW und RW2
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_11_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_12_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, RW2
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+-+Vorausr%C3%BCstwagen+und+R%C3%BCstwagen.+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz - Vorausrüstwagen und Rüstwagen. Es rückt aus: VRW, RW2'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+-+Vorausr%C3%BCstwagen+und+R%C3%BCstwagen.+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657417229'
-  alias: alarmszene_z_loeschzug_ueberland
-  description: Szene Z Löschzug Überland
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.loschzug
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: ELW (FüGr), LF1, DLK, LF2
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+-+L%C3%B6schzug+%C3%9Cberland.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+DLK%2C+LF2&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz - Löschzug Überland. Es rückt aus: Führungsgruppe, LF1, DLK,
-        LF2'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+-+L%C3%B6schzug+%C3%9Cberland.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+DLK%2C+LF2&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657607047'
-  alias: alarmszene_z_loeschzug_ueberland_erweitert
-  description: Szene Z Löschzug Überland Erweitert
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.loschzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_17_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_4_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: ELW (FüGr), LF1, DLK, LF2, GW-A, GW-Hy
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+-+L%C3%B6schzug+%C3%9Cberland+erweitert.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+DLK%2C+LF2%2C+Ger%C3%A4tewagen+Atemschutz%2C+Ger%C3%A4tewagen+Hygiene&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz - Löschzug Überland erweitert. Es rückt aus: Führungsgruppe,
-        LF1, DLK, LF2, Gerätewagen Atemschutz, Gerätewagen Hygiene'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+-+L%C3%B6schzug+%C3%9Cberland+erweitert.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+DLK%2C+LF2%2C+Ger%C3%A4tewagen+Atemschutz%2C+Ger%C3%A4tewagen+Hygiene&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657648523'
-  alias: alarmszene_z_ruestzug_ueberland
-  description: Szene Z Rüstzug Überland
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: VRW, RW2, TLF, ELW (ZF)
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+-+R%C3%BCstzug+%C3%9Cberland.+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+TLF%2C+E+L+W+mit+Zugf%C3%BChrern.&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz - Rüstzug Überland. Es rückt aus: VRW, RW2, TLF, E L W mit Zugführern.'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+-+R%C3%BCstzug+%C3%9Cberland.+Es+r%C3%BCckt+aus%3A+VRW%2C+RW2%2C+TLF%2C+E+L+W+mit+Zugf%C3%BChrern.&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657825292'
-  alias: alarmszene_z_ruestzug_ueberland_erweitert
-  description: Szene Z Rüstzug Überlang Erweitert
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: ELW (FüGr), VRW, RW2, TLF, LF1
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+-+R%C3%BCstzug+%C3%9Cberland+erweitert.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+VRW%2C+RW2%2C+TLF%2C+LF1.&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz - Rüstzug Überland erweitert. Es rückt aus: Führungsgruppe, VRW,
-        RW2, TLF, LF1.'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+-+R%C3%BCstzug+%C3%9Cberland+erweitert.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+VRW%2C+RW2%2C+TLF%2C+LF1.&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657913930'
-  alias: alarmszene_z_hoehenrettung
-  description: Szene Z Höhenrettung
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_1_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_2_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_3_einsatz
-    metadata: {}
-  - service: input_text.set_value
-    data:
-      value: KdoW, MTW-2, MTW-1
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+-+H%C3%B6henrettung.+Es+r%C3%BCckt+aus%3A+KdoW%2C+MTW-1%2C+MTW-2&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz - Höhenrettung. Es rückt aus: KdoW, MTW-1, MTW-2'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+-+H%C3%B6henrettung.+Es+r%C3%BCckt+aus%3A+KdoW%2C+MTW-1%2C+MTW-2&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1688657982494'
-  alias: alarmszene_z5
-  description: Szene Z5
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.loschzug
-    metadata: {}
-  - service: cover.open_cover
-    data: {}
-    target:
-      entity_id:
-      - cover.garage_halle12
-      - cover.garage_halle13
-      - cover.garage_halle17
-      - cover.garage_halle4
-  - service: input_text.set_value
-    data:
-      value: ELW (FüGr), LF1, DLK, LF2, TLF, RW2, GW-A, GW-Hy
-    target:
-      entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Zusatz+5+-+Weltalarm.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+DLK%2C+LF2%2C+TLF%2C+RW2%2C+Ger%C3%A4tewagen+Atemschutz%2C+Ger%C3%A4tewagen+Hygiene.&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Zusatz 5 - Weltalarm. Es rückt aus: Führungsgruppe, LF1, DLK, LF2, TLF,
-        RW2, Gerätewagen Atemschutz, Gerätewagen Hygiene.'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Zusatz+5+-+Weltalarm.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+DLK%2C+LF2%2C+TLF%2C+RW2%2C+Ger%C3%A4tewagen+Atemschutz%2C+Ger%C3%A4tewagen+Hygiene.&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
 - id: '1688733408394'
   alias: test_automation
   description: ''
   trigger: []
   condition: []
   action:
-  - service: media_player.volume_set
-    metadata: {}
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet_2
-    enabled: true
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Der+britische+K%C3%B6nig+Charles+III.+ist+an+Krebs+erkrankt%2C+das+hat+der+Buckingham+Palast+mitgeteilt.+Einzelheiten+zur+Diagnose+wurden+nicht+bekannt+gegeben%2C+der+Monarch+sei+guten+Mutes%2C+was+die+Therapie+anbelangt&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: Der britische König Charles III. ist an Krebs erkrankt, das hat der Buckingham
-        Palast mitgeteilt. Einzelheiten zur Diagnose wurden nicht bekannt gegeben,
-        der Monarch sei guten Mutes, was die Therapie anbelangt
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Der+britische+K%C3%B6nig+Charles+III.+ist+an+Krebs+erkrankt%2C+das+hat+der+Buckingham+Palast+mitgeteilt.+Einzelheiten+zur+Diagnose+wurden+nicht+bekannt+gegeben%2C+der+Monarch+sei+guten+Mutes%2C+was+die+Therapie+anbelangt&language=de_DE&voice=de_DE-thorsten-high
-    enabled: false
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://media_source/local/DB_Gong.mp3
-      media_content_type: audio/mpeg
-    metadata:
-      title: DB_Gong.mp3
-      thumbnail:
-      media_class: music
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://media_source
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://media_source/local/Alarmgong_Bochum.mp3
-      media_content_type: audio/mpeg
-    metadata:
-      title: Alarmgong_Bochum.mp3
-      thumbnail:
-      media_class: music
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://media_source
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Es+r%C3%BCckt+aus%3A+H+L+F%2C+R+W+2%2C+D+L+K&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Es rückt aus: H L F, R W 2, D L K'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Es+r%C3%BCckt+aus%3A+H+L+F%2C+R+W+2%2C+D+L+K&language=de_DE&voice=de_DE-thorsten-high
-    enabled: true
-  mode: single
-- id: '1688743007282'
-  alias: alarmszene_u4
-  description: Szene U4
-  trigger: []
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.rustzug
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_15_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_16_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_17_einsatz
-    metadata: {}
-  - service: scene.turn_on
-    target:
-      entity_id: scene.halle_4_einsatz
-    metadata: {}
   - service: input_text.set_value
-    data:
-      value: ELW (FüGr), LF1, RW2, LF2, GW-A, TLF, GW-Hy
-    target:
+    data_template:
       entity_id: input_text.aao
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Umwelt+4.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+RW2%2C+LF2%2C+Ger%C3%A4tewagen+Atemschutz%2C+TLF%2C+Ger%C3%A4tewagen+Hygiene&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: 'Umwelt 4. Es rückt aus: Führungsgruppe, LF1, RW2, LF2, Gerätewagen Atemschutz,
-        TLF, Gerätewagen Hygiene'
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Umwelt+4.+Es+r%C3%BCckt+aus%3A+F%C3%BChrungsgruppe%2C+LF1%2C+RW2%2C+LF2%2C+Ger%C3%A4tewagen+Atemschutz%2C+TLF%2C+Ger%C3%A4tewagen+Hygiene&language=de_DE&voice=de_DE-thorsten-high
+      value: '{{states(''input_text.aao'') | string }} Nachforderung'
   mode: single
 - id: '1690804901819'
   alias: alarm_zuruecksetzen
@@ -2781,17 +201,12 @@
       entity_id: timer.alarm_reset_timer
   condition: []
   action:
-  - delay:
-      hours: 0
-      minutes: 15
-      seconds: 0
-      milliseconds: 0
-    enabled: false
   - service: input_text.set_value
     data:
       value: Aktuell kein Einsatz
     target:
       entity_id: input_text.aao
+    enabled: false
   - service: cover.close_cover
     data: {}
     target:
@@ -2808,6 +223,24 @@
       - cover.door_fahrzeughalle_neu
       - cover.cover_schranke_lkw
       - cover.cover_schranke_pkw
+  - service: input_boolean.turn_off
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.lf2_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.kdow_anforderung
+      - input_boolean.gwt_anforderung
+      - input_boolean.gwh_anforderung
+      - input_boolean.mtw1_anforderung
+      - input_boolean.elw_anforderung
+      - input_boolean.mtw2_anforderung
+      - input_boolean.gwa_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.vrw_anforderung
+    data: {}
+    enabled: false
   mode: single
 - id: '1696437228483'
   alias: Gehen
@@ -2856,6 +289,12 @@
       entity_id:
       - cover.leinwand_glut
       - cover.leinwand_feuer
+  - service: input_select.select_option
+    metadata: {}
+    data:
+      option: An
+    target:
+      entity_id: input_select.ansagen
   mode: single
 - id: '1697977300655'
   alias: Altbau zu&aus
@@ -2889,104 +328,6 @@
     data: {}
     target:
       entity_id: timer.alarm_reset_timer
-  mode: single
-- id: '1699539130268'
-  alias: Durchsage LKW Schranke
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet_2
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://media_source/local/DB_Gong.mp3
-      media_content_type: audio/mpeg
-    metadata:
-      title: DB_Gong.mp3
-      thumbnail:
-      media_class: music
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://media_source
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Es+ist+schon+wieder+jemand+an+der+LKW+Schranke%2C+Hurenhagel.&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: Es ist schon wieder jemand an der LKW Schranke, Hurenhagel.
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Es+ist+schon+wieder+jemand+an+der+LKW+Schranke%2C+Hurenhagel.&language=de_DE&voice=de_DE-thorsten-high
-  mode: single
-- id: '1699539235967'
-  alias: Durchsage PKW Schranke
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - service: media_player.volume_set
-    data:
-      volume_level: 1
-    target:
-      entity_id: media_player.vlc_telnet_2
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://media_source/local/DB_Gong.mp3
-      media_content_type: audio/mpeg
-    metadata:
-      title: DB_Gong.mp3
-      thumbnail:
-      media_class: music
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://media_source
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - service: media_player.play_media
-    target:
-      entity_id: media_player.vlc_telnet_2
-    data:
-      media_content_id: media-source://tts/tts.piper?message=Es+ist+schon+wieder+jemand+an+der+PKW+Schranke%2C+Hurenhagel.&language=de_DE&voice=de_DE-thorsten-high
-      media_content_type: provider
-    metadata:
-      title: Es ist schon wieder jemand an der PKW Schranke, Hurenhagel.
-      thumbnail: https://brands.home-assistant.io/_/tts/logo.png
-      media_class: app
-      children_media_class:
-      navigateIds:
-      - {}
-      - media_content_type: app
-        media_content_id: media-source://tts
-      - media_content_type: provider
-        media_content_id: media-source://tts/tts.piper?message=Es+ist+schon+wieder+jemand+an+der+PKW+Schranke%2C+Hurenhagel.&language=de_DE&voice=de_DE-thorsten-high
   mode: single
 - id: '1700129602745'
   alias: Halle16_Fix_Auf
@@ -3126,6 +467,14 @@
       value: RW2, LF2, GW-T
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.rw2_anforderung
+      - input_boolean.lf2_anforderung
+      - input_boolean.gwt_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3149,7 +498,7 @@
         metadata: {}
         data_template:
           directory: 0/9
-          file: '1'
+          file: '2'
       - delay:
           hours: 0
           minutes: 1
@@ -3168,6 +517,11 @@
       value: HLF
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.hlf_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3185,7 +539,7 @@
         metadata: {}
         data_template:
           directory: 0/9
-          file: '0'
+          file: '1'
       - delay:
           hours: 0
           minutes: 1
@@ -3204,6 +558,18 @@
       value: ELW (FüGr), HLF, RW2, LF1, GW-A, LF2, VRW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.gwa_anforderung
+      - input_boolean.vrw_anforderung
+      - input_boolean.lf2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3233,7 +599,7 @@
         metadata: {}
         data_template:
           directory: 0/9
-          file: '2'
+          file: '3'
       - delay:
           hours: 0
           minutes: 1
@@ -3252,6 +618,16 @@
       value: MTW2 mit Boot, RW2, DLK, LF2, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.mtw2_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.lf2_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3279,7 +655,7 @@
         metadata: {}
         data_template:
           directory: 0/9
-          file: '3'
+          file: '0'
       - delay:
           hours: 0
           minutes: 1
@@ -3298,6 +674,18 @@
       value: ELW (FüGr), HLF, RW2, LF1, GW-A, LF2, VRW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.gwa_anforderung
+      - input_boolean.lf2_anforderung
+      - input_boolean.vrw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3327,7 +715,7 @@
         metadata: {}
         data_template:
           directory: 0/9
-          file: '4'
+          file: '5'
       - delay:
           hours: 0
           minutes: 1
@@ -3346,6 +734,11 @@
       value: VRW
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.vrw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3382,6 +775,11 @@
       value: VRW
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.vrw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3418,6 +816,11 @@
       value: HLF
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.hlf_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3454,6 +857,11 @@
       value: VRW
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.vrw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3490,6 +898,11 @@
       value: HLF
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.hlf_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3526,6 +939,13 @@
       value: HLF, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.hlf_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3566,6 +986,15 @@
       value: HLF, DLK, LF1, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.dlk_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3610,6 +1039,16 @@
       value: MTW2 mit Boot, RW2, DLK, HLF, ELW(ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.mtw2_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3656,6 +1095,16 @@
       value: DLK, LF1, RW2, MTW2 mit  HöRe Anhänger, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.dlk_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.mtw2_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3702,6 +1151,15 @@
       value: DLK, RW2, MTW2 mit Höhenrettungsanhänger, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.dlk_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.mtw2_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3746,6 +1204,10 @@
       value: HLF
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.hlf_anforderung
+    data: {}
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3782,6 +1244,11 @@
       value: HLF
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.hlf_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3818,6 +1285,14 @@
       value: HLF, RW2, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.elw_anforderung
+      - input_boolean.rw2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3860,6 +1335,15 @@
       value: HLF, RW2, LF1, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.rw2_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3904,6 +1388,15 @@
       value: HLF, RW2, GW-T, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.gwt_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3948,6 +1441,16 @@
       value: HLF, RW2, GW-T, LF1, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.gwt_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -3994,6 +1497,11 @@
       value: HLF
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.hlf_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4029,6 +1537,16 @@
       value: HLF, DLK, LF1, GW-Hy, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.gwh_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4056,7 +1574,7 @@
         metadata: {}
         data_template:
           directory: 0/3
-          file: '5'
+          file: '16'
       - delay:
           hours: 0
           minutes: 1
@@ -4075,6 +1593,18 @@
       value: HLF, DLK, LF1, RW2, GW-A, GW-Hy,  ELW (FüGr)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.dlk_anforderung
+      - input_boolean.elw_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.gwa_anforderung
+      - input_boolean.gwh_anforderung
+      - input_boolean.hlf_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4125,6 +1655,15 @@
       value: HLF, DLK, LF1, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.dlk_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4169,6 +1708,15 @@
       value: HLF, DLK, LF1, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.lf1_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4213,6 +1761,15 @@
       value: HLF, DLK, LF1, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.lf1_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4257,6 +1814,15 @@
       value: HLF, DLK, LF1, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.elw_anforderung
+      - input_boolean.dlk_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4301,6 +1867,15 @@
       value: HLF, LF1, LF2, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.lf2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4345,6 +1920,18 @@
       value: HLF, DLK, LF1, GW-A, GW-Hy,  ELW (FüGru), VRW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.elw_anforderung
+      - input_boolean.vrw_anforderung
+      - input_boolean.gwa_anforderung
+      - input_boolean.gwh_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4393,6 +1980,14 @@
       value: RW2, LF2, GW-T
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.rw2_anforderung
+      - input_boolean.lf2_anforderung
+      - input_boolean.gwt_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4435,6 +2030,13 @@
       value: HLF, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4475,6 +2077,11 @@
       value: LF2
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.lf2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4511,6 +2118,11 @@
       value: LF2
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.lf2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4547,6 +2159,13 @@
       value: VRW, RW2
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.vrw_anforderung
+      - input_boolean.rw2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4576,7 +2195,7 @@
           milliseconds: 0
   mode: single
 - id: '1706592951855'
-  alias: 2024_alarmszene_2024_bahn
+  alias: 2024_alarmszene_t_2024_bahn
   description: ''
   trigger: []
   condition: []
@@ -4587,6 +2206,22 @@
       value: HLF, RW2, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.elw_anforderung
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4616,6 +2251,13 @@
       value: DLK, RW2
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.dlk_anforderung
+      - input_boolean.rw2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4656,6 +2298,11 @@
       value: LF2
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.lf2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4692,6 +2339,11 @@
       value: LF2
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.lf2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4728,6 +2380,13 @@
       value: HLF, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4768,6 +2427,15 @@
       value: VRW, HLF, RW2, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.vrw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4810,6 +2478,15 @@
       value: VRW, HLF, RW2, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.vrw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4852,6 +2529,16 @@
       value: VRW, HLF, RW2, LF1, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.vrw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4896,6 +2583,16 @@
       value: VRW, HLF, RW2, GW-T,  ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.vrw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.gwt_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4940,6 +2637,16 @@
       value: MTW2 mit Boot, RW2, DLK, LF2, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.mtw2_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.lf2_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -4986,6 +2693,16 @@
       value: VRW, HLF, RW2, DLK, ELW (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.vrw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5030,6 +2747,18 @@
       value: ELW (FüGr), VRW, HLF, RW2, LF1, GW-T, MTW-1 (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.vrw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.gwt_anforderung
+      - input_boolean.mtw1_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5078,6 +2807,18 @@
       value: ELW (FüGr), VRW, HLF, RW2, LF1, GW-T,  MTW-1 (ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.vrw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.gwt_anforderung
+      - input_boolean.mtw1_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5115,7 +2856,7 @@
           milliseconds: 0
   mode: single
 - id: '1706594925961'
-  alias: 2024_alarmszene_dlk_solo
+  alias: 2024_alarmszene_z_dlk_solo
   description: ''
   trigger: []
   condition: []
@@ -5126,6 +2867,11 @@
       value: DLK
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.dlk_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5154,6 +2900,11 @@
       value: GW-A
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.gwa_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5164,11 +2915,19 @@
     data: {}
     target:
       entity_id: light.halle17
-  - service: shell_command.ela_song_playback_script
-    metadata: {}
-    data_template:
-      directory: 0/10
-      file: '2'
+  - repeat:
+      count: 5
+      sequence:
+      - service: shell_command.ela_song_playback_script
+        metadata: {}
+        data_template:
+          directory: 0/10
+          file: '2'
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
   mode: single
 - id: '1706594996476'
   alias: 2024_alarmszene_z_dlk_rettunng
@@ -5182,6 +2941,13 @@
       value: DLK, RW2
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.dlk_anforderung
+      - input_boolean.rw2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5196,11 +2962,19 @@
       entity_id:
       - light.halle14
       - light.halle12
-  - service: shell_command.ela_song_playback_script
-    metadata: {}
-    data_template:
-      directory: 0/10
-      file: '9'
+  - repeat:
+      count: 5
+      sequence:
+      - service: shell_command.ela_song_playback_script
+        metadata: {}
+        data_template:
+          directory: 0/10
+          file: '9'
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
   mode: single
 - id: '1706595035025'
   alias: 2024_alarmszene_z_dlk_lf
@@ -5211,9 +2985,16 @@
   - service: input_text.set_value
     metadata: {}
     data:
-      value: DLK + LF 1
+      value: DLK, LF 1
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.dlk_anforderung
+      - input_boolean.lf1_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5254,6 +3035,13 @@
       value: VRW, RW2
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.rw2_anforderung
+      - input_boolean.vrw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5268,11 +3056,19 @@
       entity_id:
       - light.halle11
       - light.halle12
-  - service: shell_command.ela_song_playback_script
-    metadata: {}
-    data_template:
-      directory: 0/10
-      file: '10'
+  - repeat:
+      count: 5
+      sequence:
+      - service: shell_command.ela_song_playback_script
+        metadata: {}
+        data_template:
+          directory: 0/10
+          file: '10'
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
   mode: single
 - id: '1706595116641'
   alias: 2024_alarmszene_z_loeschzug_ueberland
@@ -5286,6 +3082,15 @@
       value: ELW (FüGr), LF1, DLK, LF2
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.lf2_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5304,11 +3109,19 @@
       - light.halle14
       - light.halle16
       - light.halle11
-  - service: shell_command.ela_song_playback_script
-    metadata: {}
-    data_template:
-      directory: 0/10
-      file: '4'
+  - repeat:
+      count: 5
+      sequence:
+      - service: shell_command.ela_song_playback_script
+        metadata: {}
+        data_template:
+          directory: 0/10
+          file: '4'
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
   mode: single
 - id: '1706595177501'
   alias: 2024_alarmszene_z_loeschzug_ueberland_erweitert
@@ -5322,6 +3135,17 @@
       value: ELW (FüGr), LF1, DLK, LF2, GW-A, GW-Hy
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.lf2_anforderung
+      - input_boolean.gwa_anforderung
+      - input_boolean.gwh_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5344,11 +3168,19 @@
       - light.halle17
       - light.halle4
       - light.halle11
-  - service: shell_command.ela_song_playback_script
-    metadata: {}
-    data_template:
-      directory: 0/10
-      file: '5'
+  - repeat:
+      count: 5
+      sequence:
+      - service: shell_command.ela_song_playback_script
+        metadata: {}
+        data_template:
+          directory: 0/10
+          file: '5'
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
   mode: single
 - id: '1706595219937'
   alias: 2024_alarmszene_t_ruestzug_ueberland
@@ -5362,6 +3194,15 @@
       value: VRW, HLF, RW 2, ELW(ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.vrw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5379,11 +3220,19 @@
       - light.halle11
       - light.halle13
       - light.halle12
-  - service: shell_command.ela_song_playback_script
-    metadata: {}
-    data_template:
-      directory: 0/10
-      file: '6'
+  - repeat:
+      count: 5
+      sequence:
+      - service: shell_command.ela_song_playback_script
+        metadata: {}
+        data_template:
+          directory: 0/10
+          file: '6'
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
   mode: single
 - id: '1706595266149'
   alias: 2024_alarmszene_z_ruestzug_ueberland_erweitert
@@ -5397,6 +3246,16 @@
       value: VRW, HLF, RW 2, LF1, ELW(ZF)
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.vrw_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.elw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5406,11 +3265,19 @@
       - cover.garage_halle13
       - cover.garage_halle12
       - cover.garage_halle15
-  - service: shell_command.ela_song_playback_script
-    metadata: {}
-    data_template:
-      directory: 0/10
-      file: '7'
+  - repeat:
+      count: 5
+      sequence:
+      - service: shell_command.ela_song_playback_script
+        metadata: {}
+        data_template:
+          directory: 0/10
+          file: '7'
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
   mode: single
 - id: '1706595322264'
   alias: 2024_z_hoehenrettung
@@ -5424,11 +3291,19 @@
       value: Höhenrettung
     target:
       entity_id: input_text.aao
-  - service: shell_command.ela_song_playback_script
-    metadata: {}
-    data_template:
-      directory: 0/10
-      file: '3'
+  - repeat:
+      count: 5
+      sequence:
+      - service: shell_command.ela_song_playback_script
+        metadata: {}
+        data_template:
+          directory: 0/10
+          file: '3'
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
   mode: single
 - id: '1706595378513'
   alias: 2024_alarmszene_z5
@@ -5442,6 +3317,22 @@
       value: ELW (FüGR),  HLF, DLK, LF1, LF 2, GW-A, GW-Hy, GW-T, MTW 1, MTW 2, VRW
     target:
       entity_id: input_text.aao
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.elw_anforderung
+      - input_boolean.hlf_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.lf2_anforderung
+      - input_boolean.gwa_anforderung
+      - input_boolean.gwh_anforderung
+      - input_boolean.gwt_anforderung
+      - input_boolean.mtw1_anforderung
+      - input_boolean.mtw2_anforderung
+      - input_boolean.vrw_anforderung
   - service: cover.open_cover
     metadata: {}
     data: {}
@@ -5457,11 +3348,19 @@
       - cover.garage_halle6
       - cover.garage_halle2
       - cover.garage_halle3
-  - service: shell_command.ela_song_playback_script
-    metadata: {}
-    data_template:
-      directory: 0/10
-      file: '0'
+  - repeat:
+      count: 5
+      sequence:
+      - service: shell_command.ela_song_playback_script
+        metadata: {}
+        data_template:
+          directory: 0/10
+          file: '0'
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
   mode: single
 - id: '1710393727936'
   alias: release_the_kraken
@@ -5789,4 +3688,467 @@
     target:
       entity_id: switch.garage2_rechts_switch_0
     data: {}
+  mode: single
+- id: '1717487188633'
+  alias: 'After Start: Install Dependency'
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: shell_command.ela_install_dep
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1720449924339'
+  alias: Akustik - Vorgong
+  description: Vorgong ausgeben über ELA
+  trigger: []
+  condition: []
+  action:
+  - service: shell_command.ela_song_playback_script
+    metadata: {}
+    data_template:
+      directory: 0/4
+      file: '3'
+  mode: single
+- id: '1720449968339'
+  alias: Akustik - Einsatz dringend
+  description: Dringender Einsatz über ELA
+  trigger: []
+  condition: []
+  action:
+  - service: shell_command.ela_song_playback_script
+    metadata: {}
+    data_template:
+      directory: 0/4
+      file: '4'
+  mode: single
+- id: '1720450009242'
+  alias: Akustik - Bagatell
+  description: Einsatz Bagatell über ELA
+  trigger: []
+  condition: []
+  action:
+  - service: shell_command.ela_song_playback_script
+    metadata: {}
+    data_template:
+      directory: 0/4
+      file: '5'
+  mode: single
+- id: '1723099957151'
+  alias: aao_zuruecksetzen
+  description: ''
+  trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.aao_reset_timer
+  condition: []
+  action:
+  - service: input_text.set_value
+    data:
+      value: Aktuell kein Einsatz
+    target:
+      entity_id: input_text.aao
+  - service: input_text.set_value
+    metadata: {}
+    data:
+      value: ' '
+    target:
+      entity_id: input_text.aao_nachforderung
+  - service: input_boolean.turn_off
+    target:
+      entity_id:
+      - input_boolean.hlf_anforderung
+      - input_boolean.lf1_anforderung
+      - input_boolean.lf2_anforderung
+      - input_boolean.dlk_anforderung
+      - input_boolean.kdow_anforderung
+      - input_boolean.gwt_anforderung
+      - input_boolean.gwh_anforderung
+      - input_boolean.mtw1_anforderung
+      - input_boolean.elw_anforderung
+      - input_boolean.mtw2_anforderung
+      - input_boolean.gwa_anforderung
+      - input_boolean.rw2_anforderung
+      - input_boolean.vrw_anforderung
+    data: {}
+  mode: single
+- id: '1723110916438'
+  alias: anforderung_elw
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle11
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.elw_anforderung
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} ELW'
+  mode: single
+- id: '1723110940196'
+  alias: anforderung_vrw
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle11
+    enabled: true
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.vrw_anforderung
+    enabled: true
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} VRW'
+  mode: single
+- id: '1723110974011'
+  alias: anforderung_rw2
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle12
+    enabled: true
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.rw2_anforderung
+    enabled: true
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} RW2'
+  mode: single
+- id: '1723111000021'
+  alias: anforderung_hlf
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle13
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.hlf_anforderung
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} HLF'
+  mode: single
+- id: '1723111024850'
+  alias: anforderung_dlk
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle14
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.dlk_anforderung
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} DLK'
+  mode: single
+- id: '1723111048107'
+  alias: anforderung_lf1
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle15
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.lf1_anforderung
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} LF1'
+  mode: single
+- id: '1723111072843'
+  alias: anforderung_lf2
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle16
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.lf2_anforderung
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} LF2'
+  mode: single
+- id: '1723111095828'
+  alias: anforderung_gwa
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle17
+  - service: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.gwa_anforderung
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} GWA'
+  mode: single
+- id: '1723111134561'
+  alias: anforderung_kdow
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_door
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.kdow_anforderung
+    data: {}
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} KDOW'
+  mode: single
+- id: '1723111157679'
+  alias: anforderung_mtw1
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle2
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.mtw1_anforderung
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} MTW1'
+  mode: single
+- id: '1723111180131'
+  alias: anforderung_mtw2
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle3
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.mtw2_anforderung
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} MTW2'
+  mode: single
+- id: '1723111210139'
+  alias: anforderung_gwh
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle4
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.gwh_anforderung
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} GWH'
+  mode: single
+- id: '1723111234441'
+  alias: anforderung_gwt
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.garage_halle6
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.gwt_anforderung
+  - service: input_text.set_value
+    data_template:
+      entity_id: input_text.aao_nachforderung
+      value: '{{states(''input_text.aao_nachforderung'') | string }} GWT'
+  mode: single
+- id: '1723619625067'
+  alias: Arbeit
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: automation.trigger
+    metadata: {}
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.ela_schalten_auf_arbeitsszene
+  mode: single
+- id: '1723619725093'
+  alias: Führungsgruppe
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: automation.trigger
+    target:
+      entity_id: automation.ela_schalten_auf_fuhrungsgruppenszene
+    data:
+      skip_condition: true
+  - service: input_select.select_option
+    metadata: {}
+    data:
+      option: Aus
+    target:
+      entity_id: input_select.ansagen
+  - if:
+    - condition: numeric_state
+      entity_id: sensor.wetterstation_helligkeit
+      below: 4000
+    then:
+    - service: light.turn_on
+      metadata: {}
+      data:
+        brightness_pct: 60
+      target:
+        entity_id:
+        - light.leitstand_gesamt
+        - light.besprechungsraum_gesamt
+  mode: single
+- id: '1723625695571'
+  alias: lehrsaalbetrieb
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: fan.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - fan.lueftung_lehrsaal_1
+      - fan.lueftung_lehrsaal_2
+      - fan.lueftung_lehrsaal_3
+  - service: automation.trigger
+    metadata: {}
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.ela_schalten_auf_lehrsaal
+  mode: single
+- id: '1723978359779'
+  alias: leitstand_arbeit
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - if:
+    - condition: numeric_state
+      entity_id: sensor.wetterstation_helligkeit
+      below: 4000
+    then:
+    - service: light.turn_on
+      metadata: {}
+      data:
+        brightness_pct: 60
+      target:
+        entity_id: light.leitstand_gesamt
+  mode: single
+- id: '1723978377936'
+  alias: fuehrungsraum_arbeit
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - if:
+    - condition: numeric_state
+      entity_id: sensor.wetterstation_helligkeit
+      below: 4000
+    then:
+    - service: light.turn_on
+      metadata: {}
+      data:
+        brightness_pct: 60
+      target:
+        entity_id:
+        - light.besprechungsraum_gruppe1
+        - light.besprechungsraum_gruppe2
+        - light.leitstand_gruppe1
   mode: single
