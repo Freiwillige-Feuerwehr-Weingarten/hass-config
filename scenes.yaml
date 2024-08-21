@@ -563,3 +563,14 @@
       entity_only: true
     cover.garage_halle16:
       entity_only: true
+- id: '1723923809484'
+  name: Test Szence
+  entities:
+    cover.door_alarmeingang:
+      device_class: door
+      friendly_name: Alarmeingang
+      supported_features: 3
+      state: closed
+  metadata:
+    cover.door_alarmeingang:
+      entity_only: true
