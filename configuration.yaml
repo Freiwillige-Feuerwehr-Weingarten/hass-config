@@ -12,6 +12,7 @@ http:
 
 homeassistant:
   external_url: https://hass.ff-weingarten.de
+  time_zone: Europe/Berlin
   customize: !include customize.yaml
   auth_providers:
   - type: trusted_networks
@@ -31,6 +32,13 @@ assist_pipeline:
 
 frontend:
   themes: !include_dir_merge_named themes
+
+zone:
+  - name: Home
+    latitude: 47.80503389824977
+    longitude: 9.642927646636965
+    radius: 150
+    icon: mdi:home
 
 #logger:
 #  default: error
@@ -57,8 +65,15 @@ shell_command:
   # tuer_akustik: '{ sleep 1; echo "ECHO 0 ON"; echo "PWF 0 4"; echo "ECHO 0 OFF"; sleep 1;} | curl --raw --max-time 1 telnet://192.168.5.2:49280 || true'
   ela_arbeit: '{ sleep 1; echo "devstatus runmode"; echo "ssrecall 1"; sleep 1;} | curl --raw --max-time 1 telnet://192.168.8.6:49280 || true'
   ela_einsatz: '{ sleep 1; echo "devstatus runmode"; echo "ssrecall 2"; sleep 1;} | curl --raw --max-time 3 telnet://192.168.8.6:49280 || true'
-  ela_fuehrungsgruppe: '{ sleep 1; echo "devstatus runmode"; echo "ssrecall 3"; sleep 1;} | curl --raw --max-time 1 telnet://192.168.8.6:49280 || true'
+  ela_lehrsaal: '{ sleep 1; echo "devstatus runmode"; echo "ssrecall 3"; sleep 1;} | curl --raw --max-time 1 telnet://192.168.8.6:49280 || true'
+  ela_fuehrungsgruppe: '{ sleep 1; echo "devstatus runmode"; echo "ssrecall 4"; sleep 1;} | curl --raw --max-time 1 telnet://192.168.8.6:49280 || true'
+  ela_saugstelle: '{ sleep 1; echo "devstatus runmode"; echo "ssrecall 5"; sleep 1;} | curl --raw --max-time 1 telnet://192.168.8.6:49280 || true'
   ela_aus: '{ sleep 1; echo "devstatus runmode"; echo "ssrecall 8"; sleep 1;} | curl --raw --max-time 1 telnet://192.168.8.6:49280 || true'
+  ela_playmode_single: '{ sleep 1; echo "event MTX:AudioPlayerGetStatus \"\"\r"; sleep 1;} | curl --raw --max-time 5 telnet://192.168.8.6:49280 || true'
+  ela_song_designation: '{ sleep 1; echo "event MTX:AudioPlayerSetCurrentSong \"dirpath=0/0|fileindex=0\"\r"; sleep 1;} | curl --raw --max-time 5 telnet://192.168.8.6:49280 || true'
+  ela_song_playback: '{ sleep 1; echo "event MTX:AudioPlayerTransport \"operation=play\"\r"; sleep 1;} | curl --raw --max-time 5 telnet://192.168.8.6:49280 || true'
+  ela_song_playback_script: expect /config/scripts/song-playback.exp {{ directory }} {{ file }}
+  ela_install_dep: /bin/sh /config/scripts/install-dependency.sh
   # gong_bagatel: '{ sleep 1; echo "ECHO 0 ON"; echo "PWF 0 2"; echo "ECHO 0 OFF"; sleep 1;} | curl --raw --max-time 1 telnet://192.168.5.2:49280 || true'
   # gong_dringend: '{ sleep 1; echo "ECHO 0 ON"; echo "PWF 0 1"; echo "ECHO 0 OFF"; sleep 1;} | curl --raw --max-time 1 telnet://192.168.5.2:49280 || true'
 
