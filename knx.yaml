@@ -157,17 +157,9 @@ switch:
     address: "4/0/56"
     state_address: "4/0/57"
 
-  # Absaugung Altbau
-  - name: absaugung
-    address: "3/3/11"
-    state_address: "3/3/14"
-
-  # Absaugung Neubau
-  - name: absaugung_neubau
-    address: "4/0/10"
-    state_address: "4/0/11"
-
-  # Lüftung Lehrsaal "1"
+    
+fan:
+    # Lüftung Lehrsaal "1"
   - name: lueftung_lehrsaal_1
     address: "4/0/1"
     state_address: "4/0/2"
@@ -181,6 +173,17 @@ switch:
   - name: lueftung_lehrsaal_3
     address: "4/0/7"
     state_address: "4/0/8"
+
+  # Absaugung Altbau
+  - name: absaugung__altbau
+    address: "3/3/11"
+    state_address: "3/3/14"
+
+  # Absaugung Neubau
+  - name: absaugung__neubau
+    address: "4/0/10"
+    state_address: "4/0/11"
+
 
 button:
   # Alarmanlage
@@ -596,16 +599,16 @@ sensor:
   - name: dusche_herren_temperatur
     state_address: "5/0/1"
     type: temperature
-  - name: dusche_herren_feuchtigkeit
+  - name: dusche_herren_humidity
     state_address: "5/0/4"
     type: humidity
-  - name: dusche_herren_co2_temp
+  - name: dusche_herren_co2
     state_address: "5/0/7"
     type: ppm
   - name: dusche_damen_temperatur
     state_address: "5/0/11"
     type: temperature
-  - name: dusche_damen_feuchtigkeit
+  - name: dusche_damen_humidity
     state_address: "5/0/14"
     type: humidity
   - name: dusche_damen_co2
@@ -614,13 +617,13 @@ sensor:
   - name: lager_co2
     state_address: "5/0/57"
     type: ppm
-  - name: lager_feuchtigkeit
+  - name: lager_humidity
     state_address: "5/0/54"
     type: humidity
   - name: umkleide_damen_bereich_temperatur
     state_address: "5/0/21"
     type: temperature
-  - name: umkleide_damen_bereich_humidty
+  - name: umkleide_damen_bereich_humidity
     state_address: "5/0/24"
     type: humidity
   - name: umkleide_damen_bereich_co2
@@ -629,7 +632,7 @@ sensor:
   - name: umkleide_herren_bereich_temperatur
     state_address: "5/0/31"
     type: temperature
-  - name: umkleide_herren_bereich_humidty
+  - name: umkleide_herren_bereich_humidity
     state_address: "5/0/34"
     type: humidity
   - name: umkleide_herren_bereich_co2
@@ -763,6 +766,14 @@ binary_sensor:
     state_address: "0/7/13"
   - name: bs_telennot_einbruch
     state_address: "0/7/14"
+  - name: bs_telenot_temp_serverraum_u27
+    state_address: "0/7/27"
+  - name: bs_telenot_temp_serverraum_u32
+    state_address: "0/7/28"
+  - name: bs_telenot_wasser_serverraum
+    state_address: "0/7/29"
+  - name: bs_telenot_wasser_batterieraum
+    state_address: "0/7/30"
   # Altbau
   - name: untergeschoß_flur_bewegung
     state_address: "1/0/41"
